@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.topBar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.navButtons {
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	width: 60%;
+}
+
+.link {
+	cursor: pointer;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 10%;
+	border-radius: 10px;
+	text-align: center;
+
+	&:hover {
+		@apply bg-green-500;
+	}
+}
