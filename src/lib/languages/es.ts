@@ -1,7 +1,7 @@
-import test from "./test/test";
+import topBar from "./components/navBars/topBar";
 
 const es = {
-	test,
+	topBar,
 };
 
 export default es;
