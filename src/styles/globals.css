@@ -10,6 +10,48 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --colors: {
+    blue: {
+      400: "#A7D8F5",
+      500: "#0070F3",
+      600: "#2F6FEB",
+      800: "#1E3A5F",
+    },
+    green: {
+      300: "#B8E0D2",
+      400: "#85DE7E",
+      500: "#408e3d",
+      600: "#477e47",
+    },
+    black: {
+      100: "#f0f0f0",
+      300: "#cfcfcf",
+      400: "#bfbfbf",
+      500: "#9e9e9e",
+      600: "#7e7e7e",
+      700: "#5e5e5e",
+      800: "#3e3e3e",
+      900: "#1e1e1e",
+    },
+    orange: {
+      300: "#F8EDEB",
+      400: "#FFD3B5",
+      500: "#FFAA00",
+      600: "#FFAA00",
+    },
+    pink: {
+      300: "#EAB4C4",
+      400: "#F8EDEB",
+      500: "#FFAA00",
+      600: "#FFAA00",
+    },
+    white: {
+      200: "#477e47",
+      300: "#E0E0E0",
+      400: "#F0F0F0",
+      500: "#FFFFFF",
+    }
+  },
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +65,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.carousel-container {
+  width: 80%;
+  margin: auto;
 }

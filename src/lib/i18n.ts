@@ -6,6 +6,7 @@ i18n.use(initReactI18next).init({
 	fallbackLng: "es",
 	debug: true,
 	lng: "es",
+	defaultNS: "common",
 	resources: {
 		es: {
 			common: es,
