@@ -3,10 +3,10 @@ import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { poppins400 } from "@/ui/fonts";
+import { poppins500 } from "@/ui/fonts";
 
 const NavButtons = [
-	{ name: "Promotions", path: "/", label: "promotions" },
+	{ name: "Home", path: "/", label: "home" },
 	{
 		name: "Popular Destinations",
 		path: "/hola",
@@ -20,9 +20,9 @@ const TopBar = () => {
 	const pathname = usePathname();
 
 	return (
-		<div className={`${styles.topBar} ${poppins400.className} antialiased`}>
+		<div className={`${styles.topBar} ${poppins500.className} antialiased`}>
 			<div className={`${styles.news} bg-orange-400 `}>
-				<p>{t("topBar.news")}</p>
+				<p>{t("components.navBars.topBar.news")}</p>
 			</div>
 			<Image
 				src="/redestinea-complete-logo.png"
@@ -43,7 +43,9 @@ const TopBar = () => {
 								: `${styles.link}`
 						}
 					>
-						<Link href={item.path}>{t(`topBar.${item.label}`)}</Link>
+						<Link href={item.path}>
+							{t(`components.navBars.topBar.${item.label}`)}
+						</Link>
 					</div>
 				))}
 			</div>
