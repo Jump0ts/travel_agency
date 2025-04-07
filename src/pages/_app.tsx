@@ -6,12 +6,14 @@ import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
 import TopBar from "@/components/navbars/topBar";
 import Footer from "@/components/footer";
+import ScrollToTopButton from "@/components/scrollToTopButton";
 
 function App({ Component, pageProps }: AppProps) {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<TopBar />
 			<Component {...pageProps} />
+			<ScrollToTopButton />
 			<Footer />
 		</div>
 	);
