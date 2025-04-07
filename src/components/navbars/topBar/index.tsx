@@ -30,7 +30,10 @@ const TopBar = () => {
 				width={300}
 				height={80}
 			/>
-			<div className={`bg-green-300 ${styles.navButtons}`}>
+			<div
+				className={`${styles.navButtons}`}
+				style={{ backgroundColor: "#67b80eab" }}
+			>
 				{NavButtons.map((item) => (
 					<div
 						key={`${item.label}-container`}
