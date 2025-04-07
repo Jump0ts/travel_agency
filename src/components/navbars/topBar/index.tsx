@@ -12,7 +12,7 @@ const NavButtons = [
 		path: "/hola",
 		label: "popularDestinations",
 	},
-	{ name: "Contact", path: "/contact", label: "contact" },
+	{ path: "/customTrips", label: "customTrips" },
 ];
 
 const TopBar = () => {
