@@ -1,6 +1,6 @@
 import Card from "@/components/card";
 import ImageWithFallback from "@/components/imageWithFallback";
-import { poppins600 } from "@/ui/fonts";
+import { poppins600, poppins400 } from "@/ui/fonts";
 import { useTranslation } from "react-i18next";
 
 const HOMESECTIONS = [
@@ -65,7 +65,7 @@ export default function Home() {
 							key={`home-section-${index}`}
 							title={`pages.home.${section}.title`}
 							description={`pages.home.${section}.description`}
-							className={backgroundColor}
+							className={`${poppins400.className} ${backgroundColor}`}
 						/>
 					);
 				})}
