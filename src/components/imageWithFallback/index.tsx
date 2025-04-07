@@ -10,6 +10,8 @@ const ImageWithFallback = ({
 	fallback = "/fallbackIMG.png",
 	alt,
 	src,
+	width = 500,
+	height = 600,
 	...props
 }: ImageWithFallbackProps) => {
 	const [imgSrc, setImgSrc] = useState(src);
@@ -19,6 +21,8 @@ const ImageWithFallback = ({
 			alt={alt}
 			onError={() => setImgSrc(fallback)}
 			src={imgSrc}
+			width={width}
+			height={height}
 			{...props}
 		/>
 	);

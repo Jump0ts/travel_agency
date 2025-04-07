@@ -6,13 +6,12 @@ import { usePathname } from "next/navigation";
 import { poppins500 } from "@/ui/fonts";
 
 const NavButtons = [
-	{ name: "Home", path: "/", label: "home" },
+	{ path: "/", label: "home" },
 	{
-		name: "Popular Destinations",
-		path: "/hola",
-		label: "popularDestinations",
+		path: "/authorTrips",
+		label: "authorTrips",
 	},
-	{ name: "Contact", path: "/contact", label: "contact" },
+	{ path: "/contact", label: "contact" },
 ];
 
 const TopBar = () => {
