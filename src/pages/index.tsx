@@ -15,7 +15,7 @@ export default function Home() {
 	const { t } = useTranslation();
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-full p-4">
-			<div className="flex flex-col w-1/2 gap-4 mt-4">
+			<div className="flex flex-col w-1/2 gap-4 mt-4 md:w-2/3">
 				<h1
 					className={`text-center text-3xl text-gray-600 mt-4 ${poppins600.className}`}
 				>
@@ -25,7 +25,7 @@ export default function Home() {
 					{t("pages.home.welcomeCard.agencyDescription")}
 				</p>
 			</div>
-			<div className="flex justify-around flex-row mt-4 mb-6 w-full">
+			<div className="flex justify-around mt-4 mb-6 w-full flex-col md:flex-row gap-4 items-center">
 				<ImageWithFallback
 					src="/images/agency.jpg"
 					alt="Agency Image"
