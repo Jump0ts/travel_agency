@@ -6,6 +6,7 @@ import customTrips from "./pages/customTrips";
 import groupTrips from "./pages/groupTrips";
 import birdwatchingTrips from "./pages/birdwatchingTrips";
 import sportsTrips from "./pages/sportsTrips";
+import cookiePolicy from "./pages/cookiePolicy";
 
 const es = {
 	components: {
@@ -16,6 +17,7 @@ const es = {
 	},
 	pages: {
 		privacyPolicy,
+		cookiePolicy,
 		home,
 		customTrips,
 		groupTrips,
