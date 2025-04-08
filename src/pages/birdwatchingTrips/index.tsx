@@ -1,13 +1,13 @@
 import StandardPageRenderer from "@/components/standardPageRenderer";
 import {
-	BIRDWATCHINGTRIPSENUM,
-	BIRDWATCHINGTRIPSIMAGES,
+	BIRDWATCHING_TRIPS_ENUM,
+	BIRDWATCHING_TRIPS_IMAGES,
 } from "@/lib/pagesEnums/birdwatchingTrips";
 import { poppins400, poppins600 } from "@/ui/fonts";
 import { getImages } from "@/utils/getImages";
 
 const BirdwatchingTrips = () => {
-	const cards = BIRDWATCHINGTRIPSENUM.map((item, index) => {
+	const cards = BIRDWATCHING_TRIPS_ENUM.map((item, index) => {
 		return {
 			title: `pages.birdwatchingTrips.${item}.title`,
 			description: `pages.birdwatchingTrips.${item}.description`,
@@ -23,7 +23,7 @@ const BirdwatchingTrips = () => {
 			pageDescription="pages.birdwatchingTrips.description"
 			pageHowWorks="pages.birdwatchingTrips.howItWorks"
 			className={`${poppins400.className} ${poppins600.className}`}
-			images={getImages(BIRDWATCHINGTRIPSIMAGES)}
+			images={getImages(BIRDWATCHING_TRIPS_IMAGES)}
 			cards={cards}
 		/>
 	);

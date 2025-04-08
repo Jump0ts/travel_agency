@@ -1,4 +1,4 @@
-export const SPORTSTRIPSENUM = [
+export const SPORTS_TRIPS_ENUM = [
 	"tripsStyle",
 	"localizationAndTime",
 	"activitiesAndExperiences",
@@ -7,7 +7,7 @@ export const SPORTSTRIPSENUM = [
 	"other",
 ] as const;
 
-export const SPORTSTRIPSIMAGES = [
+export const SPORTS_TRIPS_IMAGES = [
 	"/images/sportsTrips/sportsTripsBasket.jpg",
 	"/images/sportsTrips/sportsTripsFut.jpg",
 	"/images/sportsTrips/sportsTripsTennis.jpg",

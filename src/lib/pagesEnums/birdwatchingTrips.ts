@@ -1,4 +1,4 @@
-export const BIRDWATCHINGTRIPSENUM = [
+export const BIRDWATCHING_TRIPS_ENUM = [
 	"tripsStyle",
 	"localizationAndTime",
 	"activitiesAndExperiences",
@@ -7,7 +7,7 @@ export const BIRDWATCHINGTRIPSENUM = [
 	"other",
 ] as const;
 
-export const BIRDWATCHINGTRIPSIMAGES = [
+export const BIRDWATCHING_TRIPS_IMAGES = [
 	"/images/birdwatchingTrips/birdwatchingPost.jpg",
 	"/images/birdwatchingTrips/birdwatchingPose.jpg",
 	"/images/birdwatchingTrips/birdwatchingGroup.jpg",
