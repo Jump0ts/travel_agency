@@ -27,24 +27,24 @@ export default function Home() {
 			</div>
 			<div className="flex justify-around mt-4 mb-6 w-full flex-col md:flex-row gap-4 items-center">
 				<ImageWithFallback
-					src="/images/agency.jpg"
-					alt="Agency Image"
+					src="/images/home/paisajePueblo.jpg"
+					alt="Home Image 1"
 					width={500}
 					height={600}
 					className="rounded-lg shadow-lg"
 					loading="lazy"
 				/>
 				<ImageWithFallback
-					src="/images/agency.jpg"
-					alt="Agency Image"
+					src="/images/home/Marian-3.jpg"
+					alt="Personal Image"
 					width={500}
 					height={600}
 					className="rounded-lg shadow-lg"
 					loading="lazy"
 				/>
 				<ImageWithFallback
-					src="/images/agency.jpg"
-					alt="Agency Image"
+					src="/images/home/monument1.jpg"
+					alt="Home Image 2"
 					width={500}
 					height={600}
 					className="rounded-lg shadow-lg"
@@ -65,6 +65,7 @@ export default function Home() {
 							key={`home-section-${index}`}
 							title={`pages.home.${section}.title`}
 							description={`pages.home.${section}.description`}
+							image={`/images/home/${section}Home.jpg`}
 							className={`${poppins400.className} ${backgroundColor}`}
 						/>
 					);
