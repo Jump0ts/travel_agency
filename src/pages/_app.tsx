@@ -7,10 +7,12 @@ import { appWithTranslation } from "next-i18next";
 import TopBar from "@/components/navbars/topBar";
 import Footer from "@/components/footer";
 import ScrollToTopButton from "@/components/scrollToTopButton";
+import CookieBanner from "@/components/cookieBanner";
 
 function App({ Component, pageProps }: AppProps) {
 	return (
 		<div className="flex flex-col min-h-screen">
+			<CookieBanner />
 			<TopBar />
 			<Component {...pageProps} />
 			<ScrollToTopButton />
