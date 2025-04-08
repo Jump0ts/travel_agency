@@ -13,6 +13,7 @@ const NavButtons = [
 		label: "popularDestinations",
 	},
 	{ path: "/customTrips", label: "customTrips" },
+	{ path: "/groupTrips", label: "groupTrips" },
 ];
 
 const TopBar = () => {
