@@ -1,13 +1,13 @@
 import StandardPageRenderer from "@/components/standardPageRenderer";
 import {
-	CUSTOMTRIPSENUM,
-	CUSTOMTRIPSIMAGES,
+	CUSTOM_TRIPS_ENUM,
+	CUSTOM_TRIPS_IMAGES,
 } from "@/lib/pagesEnums/customTrips";
 import { poppins400, poppins600 } from "@/ui/fonts";
 import { getImages } from "@/utils/getImages";
 
 const CustomTrips = () => {
-	const cards = CUSTOMTRIPSENUM.map((item, index) => {
+	const cards = CUSTOM_TRIPS_ENUM.map((item, index) => {
 		return {
 			title: `pages.customTrips.${item}.title`,
 			description: `pages.customTrips.${item}.description`,
@@ -23,7 +23,7 @@ const CustomTrips = () => {
 			pageDescription="pages.customTrips.description"
 			pageHowWorks="pages.customTrips.howItWorks"
 			className={`${poppins400.className} ${poppins600.className}`}
-			images={getImages(CUSTOMTRIPSIMAGES)}
+			images={getImages(CUSTOM_TRIPS_IMAGES)}
 			cards={cards}
 		/>
 	);

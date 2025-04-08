@@ -1,4 +1,4 @@
-export const CUSTOMTRIPSENUM = [
+export const CUSTOM_TRIPS_ENUM = [
 	"tripsStyle",
 	"localizationAndTime",
 	"activitiesAndExperiences",
@@ -7,7 +7,7 @@ export const CUSTOMTRIPSENUM = [
 	"other",
 ] as const;
 
-export const CUSTOMTRIPSIMAGES = [
+export const CUSTOM_TRIPS_IMAGES = [
 	"/images/customTrips/customTripsBeach.jpg",
 	"/images/customTrips/customTripsRoad.jpg",
 	"/images/customTrips/customTripsNY.jpg",
