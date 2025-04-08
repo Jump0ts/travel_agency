@@ -7,6 +7,7 @@ import groupTrips from "./pages/groupTrips";
 import birdwatchingTrips from "./pages/birdwatchingTrips";
 import sportsTrips from "./pages/sportsTrips";
 import cookiePolicy from "./pages/cookiePolicy";
+import contactForm from "./components/contactForm";
 
 const es = {
 	components: {
@@ -14,6 +15,7 @@ const es = {
 			topBar,
 		},
 		footer,
+		contactForm,
 	},
 	pages: {
 		privacyPolicy,
