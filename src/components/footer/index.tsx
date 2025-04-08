@@ -1,3 +1,4 @@
+import { Facebook, Instagram, Mail } from "@mui/icons-material";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
@@ -10,11 +11,28 @@ const Footer = () => {
 					{t("components.footer.privacyPolicy")}
 				</Link>
 				<span className="mx-2">|</span>
+				<Link href="/cookiePolicy" className="text-black hover:text-gray-800">
+					{t("components.footer.cookiePolicy")}
+				</Link>
+			</div>
+			<div className="container mx-auto text-center">
 				<Link
-					href="/terms-of-service"
+					href="https://www.facebook.com/redestinea"
 					className="text-black hover:text-gray-800"
 				>
-					{t("components.footer.termsOfService")}
+					<Facebook style={{ width: "40px", height: "40px" }} />
+				</Link>
+				<Link
+					href="https://www.instagram.com/redestinea"
+					className="text-black hover:text-gray-800"
+				>
+					<Instagram style={{ width: "40px", height: "40px" }} />
+				</Link>
+				<Link
+					href="mailto:redestinea@gmail.com"
+					className="text-black hover:text-gray-800"
+				>
+					<Mail style={{ width: "40px", height: "40px" }} />
 				</Link>
 			</div>
 			<div className="container mx-auto text-center">

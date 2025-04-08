@@ -7,7 +7,7 @@ const footer = {
 		twitter: "Twitter",
 	},
 	privacyPolicy: "Política de privacidad",
-	termsOfService: "Términos de servicio",
+	cookiePolicy: "Política de cookies",
 };
 
 export default footer;
