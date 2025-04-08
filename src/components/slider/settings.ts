@@ -6,6 +6,8 @@ export const settings = {
 	slidesToScroll: 1,
 	initialSlide: 0,
 	arrows: false,
+	autoplay: true,
+	autoplaySpeed: 3000,
 	responsive: [
 		{
 			breakpoint: 1024,
