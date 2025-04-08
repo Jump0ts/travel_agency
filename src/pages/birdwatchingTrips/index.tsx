@@ -6,7 +6,7 @@ import {
 import { poppins400, poppins600 } from "@/ui/fonts";
 import { getImages } from "@/utils/getImages";
 
-const CustomTrips = () => {
+const BirdwatchingTrips = () => {
 	const cards = BIRDWATCHINGTRIPSENUM.map((item, index) => {
 		return {
 			title: `pages.birdwatchingTrips.${item}.title`,
@@ -29,4 +29,4 @@ const CustomTrips = () => {
 	);
 };
 
-export default CustomTrips;
+export default BirdwatchingTrips;
