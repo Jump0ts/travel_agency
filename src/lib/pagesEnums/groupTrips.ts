@@ -6,3 +6,9 @@ export const GROUPTRIPSENUM = [
 	"budget",
 	"other",
 ] as const;
+
+export const GROUPTRIPSIMAGES = [
+	"/images/groupTrips/groupTripsDisney.jpg",
+	"/images/groupTrips/groupTripsPhotos.jpg",
+	"/images/groupTrips/groupTripsRD.jpg",
+];

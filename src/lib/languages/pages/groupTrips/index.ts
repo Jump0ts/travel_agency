@@ -13,7 +13,7 @@ const groupTrips = {
 		description:
 			"¿A dónde queréis ir? ¿Cuántos días planeáis viajar? Cuéntanos vuestras preferencias y os ayudaremos a elegir el destino perfecto y la duración ideal para vuestro viaje.\nIndícanos los lugares que soñáis conocer y cuánto tiempo tenéis. Os ayudamos a sacar el máximo partido a vuestro viaje, ya sea una escapada corta o una gran aventura.\nElegid un lugar o varios, y decidnos cuántos días tenéis. Os ayudamos a optimizar cada etapa del viaje para que todos disfrutéis al máximo.",
 	},
-	activitiesAndExperiencies: {
+	activitiesAndExperiences: {
 		title: "🎒 Actividades y Experiencias",
 		description:
 			"Diseñamos actividades que se disfruten en grupo: visitas guiadas, experiencias locales, rutas personalizadas, dinámicas para empresas o planes divertidos para amigos y familias.\n¿Queréis explorar, descansar, descubrir sabores nuevos o vivir adrenalina? Elegid entre rutas, excursiones, talleres, actividades locales y experiencias únicas que encajen con el grupo.\nNos adaptamos a los intereses de cada uno para que todos disfrutéis al máximo.",
