@@ -4,6 +4,7 @@ const topBar = {
 	customTrips: "Viajes a medida",
 	groupTrips: "Viajes en grupo",
 	birdwatchingTrips: "Viajes de observación de aves",
+	sportsTrips: "Viajes deportivos",
 	news: "**¡Estamos creando nuevas experiencias! Suscríbete a nuestro boletín para recibir las últimas noticias y ofertas.**",
 };
 
