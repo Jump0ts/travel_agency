@@ -7,13 +7,9 @@ import { poppins500 } from "@/ui/fonts";
 
 const NavButtons = [
 	{ name: "Home", path: "/", label: "home" },
-	{
-		name: "Popular Destinations",
-		path: "/hola",
-		label: "popularDestinations",
-	},
 	{ path: "/customTrips", label: "customTrips" },
 	{ path: "/groupTrips", label: "groupTrips" },
+	{ path: "/birdwatchingTrips", label: "birdwatchingTrips" },
 ];
 
 const TopBar = () => {
