@@ -13,7 +13,7 @@ const customTrips = {
 		description:
 			"¿A dónde quieres ir? ¿Cuántos días planeas viajar? Cuéntanos tus preferencias y te ayudaremos a elegir el destino perfecto y la duración ideal para tu viaje.\nIndícanos los lugares que sueñas conocer y cuánto tiempo tienes. Te ayudamos a sacar el máximo partido a tu viaje, ya sea una escapada corta o una gran aventura.",
 	},
-	activitiesAndExperiencies: {
+	activitiesAndExperiences: {
 		title: "🎒 Actividades y Experiencias",
 		description:
 			"¿Prefieres explorar, descansar, descubrir sabores nuevos o vivir adrenalina? Elige entre rutas, excursiones, talleres, actividades locales y experiencias únicas que encajen contigo.",

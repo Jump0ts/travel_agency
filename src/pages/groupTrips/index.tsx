@@ -1,6 +1,7 @@
 import StandardPageRenderer from "@/components/standardPageRenderer";
-import { GROUPTRIPSENUM } from "@/lib/pagesEnums/groupTrips";
+import { GROUPTRIPSENUM, GROUPTRIPSIMAGES } from "@/lib/pagesEnums/groupTrips";
 import { poppins400, poppins600 } from "@/ui/fonts";
+import { getImages } from "@/utils/getImages";
 
 const GroupTrips = () => {
 	const cards = GROUPTRIPSENUM.map((item, index) => {
@@ -19,11 +20,7 @@ const GroupTrips = () => {
 			pageDescription="pages.groupTrips.description"
 			pageHowWorks="pages.groupTrips.howItWorks"
 			className={`${poppins600.className}`}
-			images={[
-				{ label: "Image 1", img: "/images/agency.jpg" },
-				{ label: "Image 2", img: "/images/agency.jpg" },
-				{ label: "Image 3", img: "/images/agency.jpg" },
-			]}
+			images={getImages(GROUPTRIPSIMAGES)}
 			cards={cards}
 		/>
 	);
