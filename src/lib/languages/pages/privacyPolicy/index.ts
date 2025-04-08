@@ -5,7 +5,7 @@ const privacyPolicy = {
 	dataProcessing: {
 		title: "¿Quién es el responsable del tratamiento de sus datos?",
 		description:
-			"MARÍA ÁNGELES RUIZ DOMINGUEZ | CIF: 52928718Z | Dir.Postal: CHICLANA DE LA FRONTERA (CADIZ), C.P. 11130, CAMINO DE LA CARBONCILLA No 2 | E-mail:redestinea@gmail.com",
+			"MARÍA ÁNGELES RUIZ DOMINGUEZ | CIF: 52928718Z | E-mail:redestinea@gmail.com",
 	},
 	purpose: {
 		title: "¿Con qué finalidad tratamos sus datos personales?",
