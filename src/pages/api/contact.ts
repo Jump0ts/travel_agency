@@ -18,11 +18,8 @@ export default async function handler(
 				Accept: "application/json",
 			},
 			body: JSON.stringify({
-				sender: { name, email: "redestinea@gmail.com" },
-				to: [
-					{ email: "josanfersal@gmail.com", name: "Redestinea" },
-					{ email: "josanfersal@gmail.com", name: "Redestinea" },
-				],
+				sender: { name: "Redestinea", email: "redestinea@gmail.com" },
+				to: [{ name: "Redestinea", email: "redestinea@gmail.com" }],
 				subject: subject,
 				htmlContent: `
 	        <h3>Nuevo mensaje de contacto</h3>
@@ -36,7 +33,7 @@ export default async function handler(
 
 		if (!brevoResponse.ok) throw new Error("Error al enviar el email");
 
-		return res.status(200).json({ success: true, Object: brevoResponse });
+		return res.status(200).json({ success: true });
 	} catch (err) {
 		console.error(err);
 		return res.status(500).json({ error: "Error al procesar el formulario" });
