@@ -6,9 +6,9 @@ import { useTranslation } from "react-i18next";
 const HOMESECTIONS = [
 	"authorTrips",
 	"customTrips",
-	"sportsTrips",
-	"birdwatchingTrips",
 	"groupTrips",
+	"birdwatchingTrips",
+	"sportsTrips",
 ] as const;
 
 export default function Home() {
