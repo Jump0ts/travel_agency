@@ -25,7 +25,7 @@ const Card = ({ title, description, image, sx, className }: CardProps) => {
 			<div className="flex flex-col gap-2 max-h-[300px] max-w-[500px]">
 				<ImageWithFallback
 					src={image}
-					alt={`${title} Home Image"`}
+					alt={`${title} Home Image`}
 					width={500}
 					height={600}
 					className="rounded-lg shadow-lg max-h-[300px] max-w-[500px] object-cover object-center transition-transform duration-300 hover:scale-105"
