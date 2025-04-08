@@ -1,7 +1,7 @@
 export const GROUPTRIPSENUM = [
 	"tripsStyle",
 	"localizationAndTime",
-	"activitiesAndExperiencies",
+	"activitiesAndExperiences",
 	"lodgeAndTransport",
 	"budget",
 	"other",
