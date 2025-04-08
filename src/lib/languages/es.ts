@@ -4,6 +4,7 @@ import privacyPolicy from "./pages/privacyPolicy";
 import home from "./pages/home";
 import customTrips from "./pages/customTrips";
 import groupTrips from "./pages/groupTrips";
+import birdwatchingTrips from "./pages/birdwatchingTrips";
 
 const es = {
 	components: {
@@ -17,6 +18,7 @@ const es = {
 		home,
 		customTrips,
 		groupTrips,
+		birdwatchingTrips,
 	},
 };
 
