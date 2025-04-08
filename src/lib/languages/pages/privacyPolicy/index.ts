@@ -5,7 +5,7 @@ const privacyPolicy = {
 	dataProcessing: {
 		title: "¿Quién es el responsable del tratamiento de sus datos?",
 		description:
-			"*** | CIF: *** | Dir.Postal: CHICLANA DE LA FRONTERA (CADIZ), C.P. 11130, CAMINO DE LA CARBONCILLA No 2 | E-mail:redestinea@gmail.com",
+			"*** | CIF: *** | E-mail:redestinea@gmail.com",
 	},
 	purpose: {
 		title: "¿Con qué finalidad tratamos sus datos personales?",

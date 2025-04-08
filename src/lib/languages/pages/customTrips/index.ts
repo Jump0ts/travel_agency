@@ -1,4 +1,4 @@
-export const customTrips = {
+const customTrips = {
 	title: "Viajes a medida",
 	description:
 		"En viajes a medida de Redestinea, cada viaje es único y diseñado para ti. Tú eliges el destino, las actividades y el ritmo del viaje, mientras nosotros creamos un itinerario exclusivo que se adapte a tus intereses y necesidades. Desde escapadas de relax hasta aventuras inolvidables, personalizamos cada detalle para que vivas la experiencia que realmente deseas. 🌍✨ #ViajesAMedida",
@@ -34,3 +34,5 @@ export const customTrips = {
 			"¿Tienes alguna duda o necesitas ayuda? Estamos aquí para asesorarte y resolver tus inquietudes. Queremos que tu viaje sea perfecto y memorable.\nTe acompañamos durante todo el proceso, resolvemos dudas y te asesoramos para que tu viaje sea exactamente lo que buscas. No dudes en contactarnos para cualquier consulta o recomendación.",
 	},
 };
+
+export default customTrips;
