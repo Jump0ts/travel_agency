@@ -1,6 +1,7 @@
 import ExpandableCard from "@/components/expandableCard";
 import Slider from "@/components/slider";
 import { useTranslation } from "react-i18next";
+import ContactForm from "../contactForm";
 
 type StandardPageRendererProps = {
 	pageTitle: string;
@@ -52,6 +53,7 @@ const StandardPageRenderer = ({
 					))}
 				</div>
 			)}
+			<ContactForm subject={t(pageTitle)} />
 		</div>
 	);
 };
