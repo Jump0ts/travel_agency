@@ -2,21 +2,30 @@
 import { useEffect, useState } from "react";
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
 
+declare global {
+	interface Window {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		dataLayer: any[];
+	}
+}
+
 export default function CookieBanner() {
 	const [hasConsent, setHasConsent] = useState(false);
 
 	useEffect(() => {
-		if (getCookieConsentValue() === "true") {
+		if (getCookieConsentValue("userConsent") === "true") {
 			setHasConsent(true);
 		}
 	}, []);
 
 	useEffect(() => {
+		console.log("Cookie consent value:", getCookieConsentValue("userConsent"));
+
 		if (!hasConsent) return;
 
 		// Cargar Google Analytics (gtag)
 		const script = document.createElement("script");
-		script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX";
+		script.src = "https://www.googletagmanager.com/gtag/js?id=G-E47NBXZ8GQ";
 		script.async = true;
 		document.head.appendChild(script);
 
@@ -25,7 +34,8 @@ export default function CookieBanner() {
 			window.dataLayer.push(args);
 		}
 		gtag("js", new Date());
-		gtag("config", "G-XXXXXXX");
+		gtag("config", "G-E47NBXZ8GQ");
+		console.log("Consent granted, loading GA");
 	}, [hasConsent]);
 
 	return (
@@ -43,6 +53,7 @@ export default function CookieBanner() {
 				fontSize: "13px",
 			}}
 			expires={150}
+			onAccept={() => setHasConsent(true)}
 		>
 			Usamos cookies para mejorar tu experiencia. Puedes aceptar o rechazar.
 		</CookieConsent>
