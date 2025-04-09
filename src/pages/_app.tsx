@@ -11,7 +11,7 @@ import CookieBanner from "@/components/cookieBanner";
 
 function App({ Component, pageProps }: AppProps) {
 	return (
-		<div className="flex flex-col min-h-screen">
+		<div className="flex flex-col min-h-screen w-full">
 			<CookieBanner />
 			<TopBar />
 			<Component {...pageProps} />

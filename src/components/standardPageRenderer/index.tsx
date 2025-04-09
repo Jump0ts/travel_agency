@@ -29,20 +29,20 @@ const StandardPageRenderer = ({
 		<div
 			className={`flex flex-col items-center justify-center w-full h-full p-4 ${className}`}
 		>
-			<div className={`flex flex-col w-1/2 gap-4 mt-4`}>
+			<div className={`flex flex-col w-full md:w-6/10 gap-4 mt-4`}>
 				<h1 className={`text-center text-3xl text-gray-600 mt-4`}>
 					{t(pageTitle)}
 				</h1>
 				<p className="text-center text-gray-500 mt-2">{t(pageDescription)}</p>
 			</div>
-			<div className="flex justify-around flex-row mt-4 mb-6 w-full">
+			<div className="flex justify-around flex-row mt-4 mb-6 md:w-7/10 max-w-screen h-full ">
 				<Slider images={images} />
 			</div>
-			<h1 className={`text-center text-3xl text-gray-600 mt-4 $`}>
+			<h1 className={`text-center text-3xl text-gray-600 mt-4`}>
 				{t(pageHowWorks)}
 			</h1>
 			{cards && (
-				<div className="flex flex-col w-3/4 gap-6 mt-4 mb-6">
+				<div className="flex flex-col w-9/10 md:w-3/4 gap-6 mt-4 mb-6">
 					{cards.map((card) => (
 						<ExpandableCard
 							key={card.title}
@@ -53,7 +53,9 @@ const StandardPageRenderer = ({
 					))}
 				</div>
 			)}
-			<ContactForm subject={t(pageTitle)} />
+			<div className="flex flex-col w-9/10 md:w-4/10 gap-6 mt-4 mb-6">
+				<ContactForm subject={t(pageTitle)} />
+			</div>
 		</div>
 	);
 };
