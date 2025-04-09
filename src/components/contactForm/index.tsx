@@ -20,23 +20,56 @@ const ContactForm = ({ subject }: ContactFormProps) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
 
-		const res = await fetch("/api/contact", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				name: formData.get("name"),
-				email: formData.get("email"),
-				phone: formData.get("phone"),
-				message: formData.get("message"),
-				subject: subject,
-			}),
-		});
+		console.log("Form data:", process.env.BREVO_API_KEY);
 
-		if (res.ok) {
+		try {
+			const brevoResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
+				method: "POST",
+				headers: {
+					"api-key": process.env.NEXT_PUBLIC_BREVO_API_KEY || "",
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: JSON.stringify({
+					sender: { name: "Redestinea", email: "redestinea@gmail.com" },
+					to: [{ name: "Redestinea", email: "redestinea@gmail.com" }],
+					subject: subject,
+					htmlContent: `
+						<h3>Nuevo mensaje de contacto</h3>
+						<p><strong>Nombre: </strong> ${formData.get("name")}</p>
+						<p><strong>Email: </strong> ${formData.get("email")}</p>
+						<p><strong>Teléfono: </strong> ${formData.get("phone")}</p>
+						<p><strong>Asunto:</strong> ${formData.get("subject")}</p>
+						<p><strong>Mensaje: </strong><br/>${formData.get("message")}</p>
+					`,
+				}),
+			});
+
+			if (!brevoResponse.ok) throw new Error("Error al enviar el email");
+
 			setSent(true);
-		} else {
+		} catch (err) {
+			console.error(err);
 			setError(t("components.contactForm.error"));
 		}
+
+		// const res = await fetch("/api/contact", {
+		// 	method: "POST",
+		// 	headers: { "Content-Type": "application/json" },
+		// 	body: JSON.stringify({
+		// 		name: formData.get("name"),
+		// 		email: formData.get("email"),
+		// 		phone: formData.get("phone"),
+		// 		message: formData.get("message"),
+		// 		subject: subject,
+		// 	}),
+		// });
+
+		// if (res.ok) {
+		// 	setSent(true);
+		// } else {
+		// 	setError(t("components.contactForm.error"));
+		// }
 	};
 
 	if (sent)
