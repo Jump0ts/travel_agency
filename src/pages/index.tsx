@@ -25,13 +25,13 @@ export default function Home() {
 					{t("pages.home.welcomeCard.agencyDescription")}
 				</p>
 			</div>
-			<div className="flex justify-around mt-4 mb-6 w-full flex-col md:flex-row gap-4 items-center">
+			<div className="flex flex-wrap justify-around mt-4 mb-6 w-full flex-col md:flex-row gap-4 items-center">
 				<ImageWithFallback
 					src="/images/home/paisajePueblo.jpg"
 					alt="Home Image 1"
 					width={500}
 					height={600}
-					className="rounded-lg shadow-lg"
+					className="rounded-lg shadow-lg max-w-[500px] w-full object-contain"
 					loading="lazy"
 				/>
 				<ImageWithFallback
@@ -39,7 +39,7 @@ export default function Home() {
 					alt="Personal Image"
 					width={500}
 					height={600}
-					className="rounded-lg shadow-lg"
+					className="rounded-lg shadow-lg max-w-[500px] w-full object-contain"
 					loading="lazy"
 				/>
 				<ImageWithFallback
@@ -47,7 +47,7 @@ export default function Home() {
 					alt="Home Image 2"
 					width={500}
 					height={600}
-					className="rounded-lg shadow-lg"
+					className="rounded-lg shadow-lg max-w-[500px] w-full object-contain"
 					loading="lazy"
 				/>
 			</div>

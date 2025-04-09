@@ -35,7 +35,7 @@ const StandardPageRenderer = ({
 				</h1>
 				<p className="text-center text-gray-500 mt-2">{t(pageDescription)}</p>
 			</div>
-			<div className="flex justify-around flex-row mt-4 mb-6 md:w-7/10 max-w-[500] h-full ">
+			<div className="flex justify-around flex-row mt-4 mb-6 md:w-7/10 max-w-screen h-full ">
 				<Slider images={images} />
 			</div>
 			<h1 className={`text-center text-3xl text-gray-600 mt-4`}>

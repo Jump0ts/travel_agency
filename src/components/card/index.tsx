@@ -24,13 +24,13 @@ const Card = ({ title, description, image, sx, className }: CardProps) => {
 				<h2 className="text-xl font-bold">{t(title)}</h2>
 				<p className="text-gray-600">{t(description)}</p>
 			</div>
-			<div className="flex flex-col gap-2 max-h-3/10 md:max-h-[300px] md:max-w-[500px]">
+			<div className="flex flex-col gap-2 md:max-h-[300px] md:max-w-[500px]">
 				<ImageWithFallback
 					src={image}
 					alt={`${title} Home Image`}
 					width={500}
 					height={600}
-					className="rounded-lg shadow-lg max-h-3/10 md:max-h-[300px] md:max-w-[500px] object-cover object-center transition-transform duration-300 hover:scale-105"
+					className="rounded-lg shadow-lg md:max-h-[300px] md:max-w-[500px] object-cover object-center transition-transform duration-300 hover:scale-105"
 					loading="lazy"
 				/>
 			</div>
