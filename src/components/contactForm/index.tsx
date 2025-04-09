@@ -26,6 +26,7 @@ const ContactForm = ({ subject }: ContactFormProps) => {
 			body: JSON.stringify({
 				name: formData.get("name"),
 				email: formData.get("email"),
+				phone: formData.get("phone"),
 				message: formData.get("message"),
 				subject: subject,
 			}),
@@ -41,7 +42,7 @@ const ContactForm = ({ subject }: ContactFormProps) => {
 	if (sent) return <p>✅ {t("components.contactForm.success")}</p>;
 
 	return (
-		<form onSubmit={handleSubmit} className="space-y-4 max-w-md w-full mx-auto">
+		<form onSubmit={handleSubmit} className="space-y-4 w-full mx-auto">
 			<div
 				className={`bg-gray-100 shadow-xl rounded-xl ${styles.wrapper} ${poppins500.className}`}
 			>
@@ -55,14 +56,23 @@ const ContactForm = ({ subject }: ContactFormProps) => {
 					className="border w-full p-2"
 					variant="outlined"
 				/>
-				<TextField
-					name="email"
-					required
-					label={t("components.contactForm.email")}
-					type="email"
-					className="border w-full p-2"
-					variant="outlined"
-				/>
+				<div className="flex flex-col md:flex-row gap-4 w-full">
+					<TextField
+						name="email"
+						required
+						label={t("components.contactForm.email")}
+						type="email"
+						className="border w-full p-2"
+						variant="outlined"
+					/>
+					<TextField
+						name="phone"
+						label={t("components.contactForm.phone")}
+						className="border w-full p-2"
+						variant="outlined"
+						type="number"
+					/>
+				</div>
 				<TextField
 					name="message"
 					required

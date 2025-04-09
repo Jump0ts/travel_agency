@@ -9,6 +9,7 @@ const contactForm = {
 	required: "Campo requerido",
 	readAndAccept: "He leído y acepto la ",
 	privacyPolicy: "Política de privacidad",
+	phone: "Teléfono",
 };
 
 export default contactForm;

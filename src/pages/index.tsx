@@ -15,7 +15,7 @@ export default function Home() {
 	const { t } = useTranslation();
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-full p-4">
-			<div className="flex flex-col w-1/2 gap-4 mt-4 md:w-2/3">
+			<div className="flex flex-col w-full gap-4 mt-4">
 				<h1
 					className={`text-center text-3xl text-gray-600 mt-4 ${poppins600.className}`}
 				>
@@ -56,10 +56,12 @@ export default function Home() {
 			>
 				{t("pages.home.whatToOffer")}
 			</h1>
-			<div className="flex flex-col gap-4 mt-4 w-9/10">
+			<div className="flex flex-col gap-4 mt-4 max-w-9/10 w-full">
 				{HOMESECTIONS.map((section, index) => {
 					const backgroundColor =
-						index % 2 === 0 ? "bg-gray-100" : "bg-blue-100 flex-row-reverse";
+						index % 2 === 0
+							? "bg-gray-100"
+							: "bg-blue-100 flex-col md:flex-row-reverse";
 					return (
 						<Card
 							key={`home-section-${index}`}
