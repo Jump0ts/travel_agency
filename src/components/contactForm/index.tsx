@@ -35,7 +35,7 @@ const ContactForm = ({ subject }: ContactFormProps) => {
 		if (res.ok) {
 			setSent(true);
 		} else {
-			setError("Hubo un error al enviar el mensaje.");
+			setError(t("components.contactForm.error"));
 		}
 	};
 
