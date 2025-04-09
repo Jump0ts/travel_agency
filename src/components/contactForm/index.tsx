@@ -39,7 +39,15 @@ const ContactForm = ({ subject }: ContactFormProps) => {
 		}
 	};
 
-	if (sent) return <p>✅ {t("components.contactForm.success")}</p>;
+	if (sent)
+		return (
+			<div
+				className={`bg-gray-100 shadow-xl rounded-xl ${styles.wrapper} ${poppins500.className} cursor-pointer`}
+				onClick={() => setSent(false)}
+			>
+				<p>{t("components.contactForm.success")}</p>
+			</div>
+		);
 
 	return (
 		<form onSubmit={handleSubmit} className="space-y-4 w-full mx-auto">
@@ -70,7 +78,7 @@ const ContactForm = ({ subject }: ContactFormProps) => {
 						label={t("components.contactForm.phone")}
 						className="border w-full p-2"
 						variant="outlined"
-						type="number"
+						type="tel"
 					/>
 				</div>
 				<TextField
