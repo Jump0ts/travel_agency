@@ -94,8 +94,6 @@ const ContactForm = ({ subject }: ContactFormProps) => {
 					<Checkbox
 						checked={privacyPolicy}
 						onChange={() => {
-							console.log("Privacy policy", !privacyPolicy);
-
 							setPrivacyPolicy(!privacyPolicy);
 						}}
 					/>
