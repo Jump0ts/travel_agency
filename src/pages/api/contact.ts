@@ -7,7 +7,7 @@ export default async function handler(
 ) {
 	if (req.method !== "POST") return res.status(405).end();
 
-	const { name, email, subject, message } = req.body;
+	const { name, email, phone, subject, message } = req.body;
 
 	try {
 		const brevoResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
@@ -23,10 +23,11 @@ export default async function handler(
 				subject: subject,
 				htmlContent: `
 	        <h3>Nuevo mensaje de contacto</h3>
-	        <p><strong>Nombre:</strong> ${name}</p>
-	        <p><strong>Email:</strong> ${email}</p>
+	        <p><strong>Nombre: </strong> ${name}</p>
+	        <p><strong>Email: </strong> ${email}</p>
+	        <p><strong>Teléfono: </strong> ${phone}</p>
 	        <p><strong>Asunto:</strong> ${subject}</p>
-	        <p><strong>Mensaje:</strong><br/>${message}</p>
+	        <p><strong>Mensaje: </strong><br/>${message}</p>
 	      `,
 			}),
 		});

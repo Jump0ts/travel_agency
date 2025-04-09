@@ -9,7 +9,7 @@ type CustomSliderProps = {
 
 const CustomSlider = ({ images }: CustomSliderProps) => {
 	return (
-		<div className="slider-container w-1/2 h-content ">
+		<div className="slider-container w-full max-w-screen h-content ">
 			<Slider {...settings}>
 				{images.map((image, index) => (
 					<div
