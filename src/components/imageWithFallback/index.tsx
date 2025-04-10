@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useState } from "react";
 import { ImageProps } from "next/image";
 
