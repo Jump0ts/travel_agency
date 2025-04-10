@@ -15,7 +15,7 @@ const ImageWithFallback = ({
 	const [imgSrc, setImgSrc] = useState(src);
 
 	return (
-		<Image
+		<img
 			alt={alt}
 			onError={() => setImgSrc(fallback)}
 			src={imgSrc}
