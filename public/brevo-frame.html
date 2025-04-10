@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Brevo Frame Redirect</title>
+		<script>
+			// Función para detectar el sistema operativo
+			function getOSNewsletter() {
+				const userAgent = navigator.userAgent;
+				if (userAgent.indexOf("Mac") !== -1) {
+					return "Mac";
+				}
+				return "Other";
+			}
+
+			// Redirección basada en el sistema operativo
+			(function redirectToFrame() {
+				const os = getOSNewsletter();
+				let frameUrl = "/brevo-frame.html"; // Archivo por defecto
+
+				if (os === "Mac") {
+					frameUrl = "/service-worker/_MACOSX/._brevo-frame.html"; // Redirigir a la versión Mac
+				} else {
+					frameUrl = "/service-worker/service-worker/brevo-frame.html";
+				}
+
+				// Redirigir al archivo adecuado
+				window.location.href = frameUrl;
+			})();
+		</script>
+	</head>
+	<body>
+		<p>Redirigiendo...</p>
+	</body>
+</html>
