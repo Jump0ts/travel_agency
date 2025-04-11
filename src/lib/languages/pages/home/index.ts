@@ -2,7 +2,7 @@ const home = {
 	welcomeCard: {
 		title: "Bienvenid@ a Viajes Redestinea",
 		agencyDescription:
-			"Los Viajes Redestinea son experiencias únicas creadas y guiadas por Marian Ruiz, diseñadas para quienes buscan explorar el mundo de una manera auténtica y personalizada. Cada itinerario es una obra exclusiva, pensada para ofrecerte lo mejor de cada destino, con detalles cuidados al máximo y la guía experta de Marian para hacer de tu viaje una aventura inolvidable. 🌍✈️ #ViajesDeAutor",
+			"Bienvenid@ a Redestinea, tu agencia de viajes a medida. Creamos experiencias únicas para viajeras y viajeros que buscan algo más que un destino. Turismo con alma, especializado en naturaleza, deporte y mucho más. ¿Preparad@ para tu próxima aventura?",
 	},
 	whatToOffer: "¿Qué ofrecemos?",
 	authorTrips: {
