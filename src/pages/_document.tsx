@@ -89,7 +89,7 @@ export default function Document() {
               Brevo.push([
                 "init",
                 {
-                  client_key: "${process.env.NEXT_PUBLIC_BREVO_TRACKER_KEY}"
+                  client_key: "${process.env.BREVO_TRACKER_KEY}"
                 }
               ]);
             `,
