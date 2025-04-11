@@ -8,6 +8,7 @@ import birdwatchingTrips from "./pages/birdwatchingTrips";
 import sportsTrips from "./pages/sportsTrips";
 import cookiePolicy from "./pages/cookiePolicy";
 import contactForm from "./components/contactForm";
+import titleMetadata from "./components/titlesMetadata";
 
 const es = {
 	components: {
@@ -16,6 +17,7 @@ const es = {
 		},
 		footer,
 		contactForm,
+		titleMetadata,
 	},
 	pages: {
 		privacyPolicy,
