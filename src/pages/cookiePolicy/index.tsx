@@ -12,7 +12,7 @@ const CookiePolicy = () => {
 					name="description"
 					content={t("components.titleMetadata.cookiePolicy.description")}
 				/>
-				<link rel="canonical" href="/" />
+				<link rel="canonical" href="/cookiePolicy" />
 				<meta
 					property="og:title"
 					content={t("components.titleMetadata.cookiePolicy.title")}
@@ -21,7 +21,7 @@ const CookiePolicy = () => {
 					property="og:description"
 					content={t("components.titleMetadata.cookiePolicy.description")}
 				/>
-				<meta property="og:url" content="/" />
+				<meta property="og:url" content="/cookiePolicy" />
 				<meta property="og:type" content="website" />
 			</Head>
 			<div

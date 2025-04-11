@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
 					name="description"
 					content={t("components.titleMetadata.privacyPolicy.description")}
 				/>
-				<link rel="canonical" href="/" />
+				<link rel="canonical" href="/privacyPolicy" />
 				<meta
 					property="og:title"
 					content={t("components.titleMetadata.privacyPolicy.title")}
@@ -22,7 +22,7 @@ const PrivacyPolicy = () => {
 					property="og:description"
 					content={t("components.titleMetadata.privacyPolicy.description")}
 				/>
-				<meta property="og:url" content="/" />
+				<meta property="og:url" content="/privacyPolicy" />
 				<meta property="og:type" content="website" />
 			</Head>
 			<div

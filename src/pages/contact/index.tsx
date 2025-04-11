@@ -12,7 +12,7 @@ const ContactPage = () => {
 					name="description"
 					content={t("components.titleMetadata.contact.description")}
 				/>
-				<link rel="canonical" href="/" />
+				<link rel="canonical" href="/contact" />
 				<meta
 					property="og:title"
 					content={t("components.titleMetadata.contact.title")}
@@ -21,7 +21,7 @@ const ContactPage = () => {
 					property="og:description"
 					content={t("components.titleMetadata.contact.description")}
 				/>
-				<meta property="og:url" content="/" />
+				<meta property="og:url" content="/contact" />
 				<meta property="og:type" content="website" />
 			</Head>
 			<div className="flex flex-col items-center min-h-screen mt-10 w-full">
