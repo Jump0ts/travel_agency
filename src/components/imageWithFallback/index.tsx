@@ -19,6 +19,7 @@ const ImageWithFallback = ({
 			alt={alt}
 			onError={() => setImgSrc(fallback)}
 			src={imgSrc}
+			loading="lazy"
 			{...props}
 		/>
 	);
