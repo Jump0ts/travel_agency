@@ -8,10 +8,14 @@ import TopBar from "@/components/navbars/topBar";
 import Footer from "@/components/footer";
 import ScrollToTopButton from "@/components/scrollToTopButton";
 import CookieBanner from "@/components/cookieBanner";
+import Head from "next/head";
 
 function App({ Component, pageProps }: AppProps) {
 	return (
 		<div className="flex flex-col min-h-screen w-full">
+			<Head>
+				<meta name="viewport" content="viewport-fit=cover" />
+			</Head>
 			<CookieBanner />
 			<TopBar />
 			<Component {...pageProps} />
