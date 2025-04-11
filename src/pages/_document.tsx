@@ -79,7 +79,6 @@ export default function Document() {
 					name="msapplication-TileImage"
 					content="/favicon-redestinea/ms-icon-144x144.png"
 				/>
-				<meta name="theme-color" content="#ffffff" />
 				<meta name="apple-mobile-web-app-title" content="Redestinea" />
 				<meta name="theme-color" content="#ffffff" />
 				<script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>

@@ -42,7 +42,10 @@ const CustomTrips = () => {
 					property="og:description"
 					content={t("components.titleMetadata.customTrips.description")}
 				/>
-				<meta property="og:url" content="/" />
+				<meta
+					property="og:url"
+					content={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`}
+				/>
 				<meta property="og:type" content="website" />
 				<meta
 					property="og:image"
