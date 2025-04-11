@@ -5,8 +5,11 @@ import {
 } from "@/lib/pagesEnums/groupTrips";
 import { poppins400, poppins600 } from "@/ui/fonts";
 import { getImages } from "@/utils/getImages";
+import Head from "next/head";
+import { useTranslation } from "react-i18next";
 
 const GroupTrips = () => {
+	const { t } = useTranslation();
 	const cards = GROUP_TRIPS_ENUM.map((item, index) => {
 		return {
 			title: `pages.groupTrips.${item}.title`,
@@ -18,14 +21,38 @@ const GroupTrips = () => {
 	});
 
 	return (
-		<StandardPageRenderer
-			pageTitle="pages.groupTrips.title"
-			pageDescription="pages.groupTrips.description"
-			pageHowWorks="pages.groupTrips.howItWorks"
-			className={`${poppins600.className}`}
-			images={getImages(GROUP_TRIPS_IMAGES)}
-			cards={cards}
-		/>
+		<>
+			<Head>
+				<title>{t("components.titleMetadata.groupTrips.title")}</title>
+				<meta
+					name="description"
+					content={t("components.titleMetadata.groupTrips.description")}
+				/>
+				<link rel="canonical" href="/" />
+				<meta
+					property="og:title"
+					content={t("components.titleMetadata.groupTrips.title")}
+				/>
+				<meta
+					property="og:description"
+					content={t("components.titleMetadata.groupTrips.description")}
+				/>
+				<meta property="og:url" content="/" />
+				<meta property="og:type" content="website" />
+				<meta
+					property="og:image"
+					content="/images/groupTrips/groupTripsDisney.jpg"
+				/>
+			</Head>
+			<StandardPageRenderer
+				pageTitle="pages.groupTrips.title"
+				pageDescription="pages.groupTrips.description"
+				pageHowWorks="pages.groupTrips.howItWorks"
+				className={`${poppins600.className}`}
+				images={getImages(GROUP_TRIPS_IMAGES)}
+				cards={cards}
+			/>
+		</>
 	);
 };
 
