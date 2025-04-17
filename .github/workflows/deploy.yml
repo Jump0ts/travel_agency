@@ -22,7 +22,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
           script: |
-            cd /ruta/a/tu/proyecto
+            cd travel_agency
             git pull origin master
             npm install
             npm run build
