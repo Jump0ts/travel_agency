@@ -9,6 +9,7 @@ import Footer from "@/components/footer";
 import ScrollToTopButton from "@/components/scrollToTopButton";
 import CookieBanner from "@/components/cookieBanner";
 import Head from "next/head";
+import ServiceWorkerBrevo from "@/components/serviceWorkerBrevo";
 
 function App({ Component, pageProps }: AppProps) {
 	return (
@@ -17,6 +18,7 @@ function App({ Component, pageProps }: AppProps) {
 				<meta name="viewport" content="viewport-fit=cover" />
 			</Head>
 			<CookieBanner />
+			<ServiceWorkerBrevo />
 			<TopBar />
 			<Component {...pageProps} />
 			<ScrollToTopButton />
