@@ -1,0 +1,29 @@
+name: 🚀 Deploy to VPS
+
+on:
+  push:
+    branches:
+      - master # O main, según tu rama principal
+
+jobs:
+  deploy:
+    name: Deploy on VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📂 Checkout repo
+        uses: actions/checkout@v3
+
+      - name: 🔐 Connect & Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            cd /ruta/a/tu/proyecto
+            git pull origin master
+            npm install
+            npm run build
+            pm2 restart travel_agency
