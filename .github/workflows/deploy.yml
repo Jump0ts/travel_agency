@@ -16,8 +16,9 @@ jobs:
 
       - name: Verificar clave SSH
         run: |
+          mkdir -p ~/.ssh  # Crear el directorio ~/.ssh si no existe
           echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa  # Asegura los permisos correctos para la clave SSH
           cat ~/.ssh/id_rsa  # Verifica que la clave se haya cargado correctamente
           ls -la ~/.ssh  # Verifica los permisos de la clave SSH
 
