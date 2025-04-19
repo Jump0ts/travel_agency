@@ -10,7 +10,7 @@ RUN npm install -g pm2
 COPY package.json package-lock.json* ./
 
 # Instalar dependencias
-RUN npm install --frozen-lockfile
+RUN npm ci
 
 # Copiar el resto del código, incluyendo ecosystem.config.js
 COPY . .
