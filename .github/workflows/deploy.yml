@@ -28,7 +28,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
           script: |
-            cd /redestinea/travel_agency_staging/travel_agency
+            cd redestinea/travel_agency_prod/travel_agency/
             git pull origin master
             docker-compose -f docker-compose.yml down
             docker-compose -f docker-compose.yml build --no-cache
