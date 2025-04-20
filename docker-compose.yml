@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    container_name: travel_agency_prod
+    volumes:
+      - .:/app
+    env_file:
+      - .env.production
+    networks:
+      - redestinea-prod
+    restart: always
+
+nginx:
+  image: nginx:stable
+  container_name: travel_agency_prod_nginx
+  ports:
+    - "8080:80"
+    - "8443:443"
+  volumes:
+    - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    - /etc/letsencrypt/live/redestinea:/etc/letsencrypt/live/redestinea:ro
+    - /etc/letsencrypt/archive/redestinea:/etc/letsencrypt/archive/redestinea:ro
+    - /etc/letsencrypt/privkey.pem:/etc/letsencrypt/privkey.pem:ro
+  networks:
+    - redestinea-prod
+  depends_on:
+    - app
+  restart: always
+networks:
+  default:
+    name: redestinea-prod
+  redestinea-prod:
+    driver: bridge
