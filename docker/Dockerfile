@@ -15,7 +15,7 @@ COPY . .
 RUN npm run build
 
 # Exponer el puerto que Next.js usará
-EXPOSE 3001
+EXPOSE 3000
 
 # Comando para ejecutar la aplicación en producción
 CMD ["npm", "start"]
