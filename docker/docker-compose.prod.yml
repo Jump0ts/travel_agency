@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+    context: .
+    dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    container_name: travel_agency_prod
+    volumes:
+      - .:/app
+    env_file:
+      - ../.env.production
+    networks:
+      - redestinea-prod
+    restart: always
+networks:
+  default:
+    name: redestinea-prod
+  redestinea-prod:
+    driver: bridge
