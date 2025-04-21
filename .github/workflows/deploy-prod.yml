@@ -1,4 +1,4 @@
-name: 🚀 Deploy to VPS
+name: 🚀 Deploy to PRODUCTION
 
 on:
   push:
@@ -18,7 +18,6 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
-
 
       - name: 🔐 Connect & Deploy via SSH
         uses: appleboy/ssh-action@v1.0.0
