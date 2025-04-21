@@ -1,7 +1,8 @@
 services:
   app:
     build:
-      context: ..
+      context: .
+      dockerfile: Dockerfile
     container_name: travel_agency_staging
     ports:
       - "3000:3000"
