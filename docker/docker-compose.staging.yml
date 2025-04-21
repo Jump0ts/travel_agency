@@ -1,14 +1,14 @@
 services:
   app:
     build:
-      context: .
+      context: ..
     container_name: travel_agency_staging
     ports:
       - "3000:3000"
     expose:
       - "3000"
     env_file:
-      - ../.env.staging
+      - .env.staging
     volumes:
       - .:/app
     networks:
