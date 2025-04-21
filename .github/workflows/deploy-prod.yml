@@ -3,11 +3,11 @@ name: 🚀 Deploy to PRODUCTION
 on:
   push:
     branches:
-      - master # O main, según tu rama principal
+      - pre
 
 jobs:
   deploy:
-    name: Deploy on VPS
+    name: Deploy to Staging
     runs-on: ubuntu-latest
 
     steps:
