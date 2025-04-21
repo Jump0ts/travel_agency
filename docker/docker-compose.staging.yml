@@ -8,7 +8,7 @@ services:
     expose:
       - "3000"
     env_file:
-      - .env.staging
+      - ../.env.staging
     volumes:
       - .:/app
     networks:
