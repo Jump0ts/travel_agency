@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: ..
+    container_name: travel_agency_staging
+    ports:
+      - "3001:3000"
+    env_file:
+      - ../.env.staging
+    volumes:
+      - .:/app
+    networks:
+      - redestinea-staging
+    restart: always
+networks:
+  default:
+    name: redestinea-staging
+  redestinea-staging:
+    driver: bridge
