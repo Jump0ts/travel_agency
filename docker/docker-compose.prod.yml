@@ -1,8 +1,7 @@
 services:
   app:
     build:
-    context: .
-    dockerfile: Dockerfile
+      context: ..
     ports:
       - "3000:3000"
     expose:
