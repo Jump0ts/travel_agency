@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/app
     env_file:
-      - .env.production
+      - ../.env.production
     networks:
       - redestinea-prod
     restart: always
