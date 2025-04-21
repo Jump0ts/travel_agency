@@ -1,40 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🌍 Redestinea — Agencia de Viajes
 
-## Getting Started
+Bienvenido/a a **Redestinea**, un proyecto creado como parte de mi portfolio profesional. Se trata de una plataforma de reservas de viajes y experiencias desarrollada con tecnologías modernas del ecosistema Front End.
 
-First, run the development server:
+## 🛠️ Tecnologías utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- ⚡ [Next.js](https://nextjs.org/)
+- 🟦 TypeScript
+- 🎨 Tailwind CSS
+- 🐳 Docker
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Demo en producción
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Puedes ver la web en funcionamiento aquí:  
+👉 [www.redestinea.com](https://www.redestinea.com)
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 📂 Estructura del proyecto
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- `/pages` — páginas del sitio
+- `/components` — componentes reutilizables
+- `/styles` — configuración de estilos con Tailwind
+- `/public` — recursos estáticos
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧪 Desarrollo y despliegue
 
-## Learn More
+El entorno está preparado para correr tanto en **staging** como en **producción** usando Docker y Nginx. Las imágenes se generan automáticamente con CI/CD.
 
-To learn more about Next.js, take a look at the following resources:
+## 🧑‍💼 Sobre mí
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+Soy desarrollador Front End especializado en React y Next.js. Este proyecto forma parte de mi portfolio técnico.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📫 Puedes saber más de mí o contactarme a través de [LinkedIn](https://www.linkedin.com/in/josanfersal/)
 
-## Deploy on Vercel
+## 📝 Licencia
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para más información.
