@@ -3,7 +3,7 @@ FROM node:20
 # Crear directorio de trabajo
 WORKDIR /src
 
-COPY package.json package-lock.json ./
+COPY ../package.json ../package-lock.json ./
 
 # Instalar dependencias
 RUN npm install
