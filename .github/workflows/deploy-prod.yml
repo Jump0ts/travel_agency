@@ -3,7 +3,7 @@ name: 🚀 Deploy to PRODUCTION
 on:
   push:
     branches:
-      - pre
+      - master
 
 jobs:
   deploy:
@@ -29,6 +29,6 @@ jobs:
           script: |
             cd redestinea/travel_agency_prod/travel_agency/
             git pull origin master
-            docker-compose -f docker-compose.yml down
-            docker-compose -f docker-compose.yml build --no-cache
-            docker-compose -f docker-compose.yml up -d
+            docker-compose -f docker/docker-compose.prod.yml down
+            docker-compose -f docker/docker-compose.prod.yml build --no-cache
+            docker-compose -f docker/docker-compose.prod.yml up -d
