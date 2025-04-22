@@ -49,7 +49,7 @@ const BirdwatchingTrips = () => {
 				<meta property="og:type" content="website" />
 				<meta
 					property="og:image"
-					content="/images/birdwatchingTrips/birdwatchingGroup.jpg"
+					content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/birdwatchingTrips/birdwatchingGroup.jpg`}
 				/>
 			</Head>
 			<StandardPageRenderer
