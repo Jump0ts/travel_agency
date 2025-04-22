@@ -15,7 +15,6 @@ const ImageWithFallback = ({
 	const [imgSrc, setImgSrc] = useState(
 		`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/${src}`
 	);
-	console.log(`src: ${process.env.RSRC_REDESTINEA_URL}`);
 
 	return (
 		<Image
