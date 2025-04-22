@@ -8,7 +8,7 @@ export const CUSTOM_TRIPS_ENUM = [
 ] as const;
 
 export const CUSTOM_TRIPS_IMAGES = [
-	"https://images.redestinea.com/images/customTrips/customTripsBeach.jpg",
-	"https://images.redestinea.com/images/customTrips/customTripsRoad.jpg",
-	"https://images.redestinea.com/images/customTrips/customTripsNY.jpg",
+	"https://rsrc.redestinea.com/images/customTrips/customTripsBeach.jpg",
+	"https://rsrc.redestinea.com/images/customTrips/customTripsRoad.jpg",
+	"https://rsrc.redestinea.com/images/customTrips/customTripsNY.jpg",
 ];
