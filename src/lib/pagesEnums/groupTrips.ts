@@ -8,7 +8,7 @@ export const GROUP_TRIPS_ENUM = [
 ] as const;
 
 export const GROUP_TRIPS_IMAGES = [
-	"https://rsrc.redestinea.com/images/groupTrips/groupTripsDisney.jpg",
-	"https://rsrc.redestinea.com/images/groupTrips/groupTripsPhotos.jpg",
-	"https://rsrc.redestinea.com/images/groupTrips/groupTripsRD.jpg",
+	"groupTrips/groupTripsDisney.jpg",
+	"groupTrips/groupTripsPhotos.jpg",
+	"groupTrips/groupTripsRD.jpg",
 ];

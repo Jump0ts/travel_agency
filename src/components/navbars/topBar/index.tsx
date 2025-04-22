@@ -32,7 +32,7 @@ const TopBar = () => {
 			</div>
 			<div className="flex flex-row justify-around items-center gap-4 p-4 rounded w-full">
 				<ImageWithFallback
-					src="https://rsrc.redestinea.com/images/redestinea-complete-logo.png"
+					src="redestinea-complete-logo.png"
 					alt="Logo"
 					width={200}
 					height={60}

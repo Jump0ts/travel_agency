@@ -33,7 +33,10 @@ export default function Home() {
 				/>
 				<meta property="og:url" content="/" />
 				<meta property="og:type" content="website" />
-				<meta property="og:image" content="/images/home/Marian-3.jpg" />
+				<meta
+					property="og:image"
+					content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/home/Marian-3.jpg`}
+				/>
 			</Head>
 			<div className="flex flex-col items-center justify-center w-full h-full p-4">
 				<div className="flex flex-col w-full gap-4 mt-4">
@@ -48,7 +51,7 @@ export default function Home() {
 				</div>
 				<div className="flex flex-wrap justify-around mt-4 mb-6 w-full flex-col md:flex-row gap-4 items-center">
 					<ImageWithFallback
-						src="https://rsrc.redestinea.com/images/home/paisajePueblo.jpg"
+						src="home/paisajePueblo.jpg"
 						alt="Home Image 1"
 						width={500}
 						height={600}
@@ -56,7 +59,7 @@ export default function Home() {
 						loading="lazy"
 					/>
 					<ImageWithFallback
-						src="https://rsrc.redestinea.com/images/home/Marian-3.jpg"
+						src="home/Marian-3.jpg"
 						alt="Personal Image"
 						width={500}
 						height={600}
@@ -64,7 +67,7 @@ export default function Home() {
 						loading="lazy"
 					/>
 					<ImageWithFallback
-						src="https://rsrc.redestinea.com/images/home/monument1.jpg"
+						src="home/monument1.jpg"
 						alt="Home Image 2"
 						width={500}
 						height={600}
@@ -88,7 +91,7 @@ export default function Home() {
 								key={`home-section-${index}`}
 								title={`pages.home.${section}.title`}
 								description={`pages.home.${section}.description`}
-								image={`https://rsrc.redestinea.com/images/home/${section}Home.jpg`}
+								image={`home/${section}Home.jpg`}
 								className={`${poppins400.className} ${backgroundColor}`}
 							/>
 						);
