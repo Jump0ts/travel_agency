@@ -47,7 +47,10 @@ const SportsTrips = () => {
 					content={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`}
 				/>
 				<meta property="og:type" content="website" />
-				<meta property="og:image" content="/images/home/sportsTripsHome.jpg" />
+				<meta
+					property="og:image"
+					content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/home/sportsTripsHome.jpg"`}
+				/>
 			</Head>
 			<StandardPageRenderer
 				pageTitle="pages.sportsTrips.title"

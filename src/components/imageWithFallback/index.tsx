@@ -7,12 +7,15 @@ type ImageWithFallbackProps = {
 } & ImageProps;
 
 const ImageWithFallback = ({
-	fallback = "https://rsrc.redestinea.com/fallbackIMG.png",
+	fallback = "fallbackIMG.png",
 	alt,
 	src,
 	...props
 }: ImageWithFallbackProps) => {
-	const [imgSrc, setImgSrc] = useState(src);
+	const [imgSrc, setImgSrc] = useState(
+		`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/${src}`
+	);
+	console.log(`src: ${process.env.RSRC_REDESTINEA_URL}`);
 
 	return (
 		<Image

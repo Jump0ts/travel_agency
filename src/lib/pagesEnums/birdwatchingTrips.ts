@@ -8,8 +8,8 @@ export const BIRDWATCHING_TRIPS_ENUM = [
 ] as const;
 
 export const BIRDWATCHING_TRIPS_IMAGES = [
-	"https://rsrc.redestinea.com/images/birdwatchingTrips/birdwatchingPost.jpg",
-	"https://rsrc.redestinea.com/images/birdwatchingTrips/birdwatchingPose.jpg",
-	"https://rsrc.redestinea.com/images/birdwatchingTrips/birdwatchingGroup.jpg",
-	"https://rsrc.redestinea.com/images/birdwatchingTrips/birdwatchingGroup2.jpg",
+	"birdwatchingTrips/birdwatchingPost.jpg",
+	"birdwatchingTrips/birdwatchingPose.jpg",
+	"birdwatchingTrips/birdwatchingGroup.jpg",
+	"birdwatchingTrips/birdwatchingGroup2.jpg",
 ];
