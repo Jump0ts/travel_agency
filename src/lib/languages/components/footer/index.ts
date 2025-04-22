@@ -8,6 +8,7 @@ const footer = {
 	},
 	privacyPolicy: "Política de privacidad",
 	cookiePolicy: "Política de cookies",
+	legalWarning: "Aviso legal",
 };
 
 export default footer;
