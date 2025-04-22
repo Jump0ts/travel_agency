@@ -49,7 +49,7 @@ const SportsTrips = () => {
 				<meta property="og:type" content="website" />
 				<meta
 					property="og:image"
-					content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/home/sportsTripsHome.jpg"`}
+					content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/home/sportsTripsHome.jpg`}
 				/>
 			</Head>
 			<StandardPageRenderer
