@@ -36,7 +36,7 @@ const LegalWarning = () => {
 						href="mailto:redestinea@gmail.com"
 						className="text-blue-500 hover:underline"
 					>
-						redestineagmail.com
+						redestinea@gmail.com
 					</Link>
 					{t("pages.legalWarning.endConfirmationRights")}
 					<Link
