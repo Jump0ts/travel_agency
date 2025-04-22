@@ -7,7 +7,7 @@ type ImageWithFallbackProps = {
 } & ImageProps;
 
 const ImageWithFallback = ({
-	fallback = "/fallbackIMG.png",
+	fallback = "https://images.redestinea.com/fallbackIMG.png",
 	alt,
 	src,
 	...props
