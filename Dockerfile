@@ -1,5 +1,7 @@
 FROM node:20
 
+ARG BUILD_TIMESTAMP
+
 # Crear directorio de trabajo
 WORKDIR /src
 
