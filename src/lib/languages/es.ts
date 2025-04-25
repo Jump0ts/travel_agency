@@ -11,6 +11,7 @@ import contactForm from "./components/contactForm";
 import titleMetadata from "./components/titlesMetadata";
 import legalWarning from "./pages/legalWarning";
 import common from "./common";
+import offers from "./components/offers";
 
 const es = {
 	common,
@@ -21,6 +22,7 @@ const es = {
 		footer,
 		contactForm,
 		titleMetadata,
+		offers,
 	},
 	pages: {
 		privacyPolicy,

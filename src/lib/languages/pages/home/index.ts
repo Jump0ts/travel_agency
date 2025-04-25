@@ -4,6 +4,12 @@ const home = {
 		agencyDescription:
 			"Bienvenid@ a Redestinea, tu agencia de viajes a medida. Creamos experiencias únicas para viajeras y viajeros que buscan algo más que un destino. Turismo con alma, especializado en naturaleza, deporte y mucho más. ¿Preparad@ para tu próxima aventura?",
 	},
+	offers: {
+		title: "Ofertas Especiales",
+		description:
+			"Descubre nuestras ofertas especiales y descuentos exclusivos. Cada viaje es una oportunidad para explorar el mundo de una manera única y personalizada",
+		seeMore: "Ver más",
+	},
 	whatToOffer: "¿Qué ofrecemos?",
 	authorTrips: {
 		title: "Viajes de Autor",

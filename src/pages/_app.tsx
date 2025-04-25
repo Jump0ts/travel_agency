@@ -10,6 +10,7 @@ import ScrollToTopButton from "@/components/scrollToTopButton";
 import CookieBanner from "@/components/cookieBanner";
 import Head from "next/head";
 import { ModalProvider } from "@/context/modal";
+import OffersProvider from "@/context/offers";
 
 function App({ Component, pageProps }: AppProps) {
 	return (
@@ -17,13 +18,15 @@ function App({ Component, pageProps }: AppProps) {
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<ModalProvider>
-				<CookieBanner />
-				<TopBar />
-				<Component {...pageProps} />
-				<ScrollToTopButton />
-				<Footer />
-			</ModalProvider>
+			<OffersProvider>
+				<ModalProvider>
+					<CookieBanner />
+					<TopBar />
+					<Component {...pageProps} />
+					<ScrollToTopButton />
+					<Footer />
+				</ModalProvider>
+			</OffersProvider>
 		</div>
 	);
 }
