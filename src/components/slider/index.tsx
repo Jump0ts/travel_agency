@@ -4,12 +4,12 @@ import ImageWithFallback from "@/components/imageWithFallback";
 import { settings } from "./settings";
 
 type CustomSliderProps = {
-	images: { label?: string; img: string }[]; // Array of image URLs
+	images: { label?: string; alt?: string; img?: string; src?: string }[]; // Array of image URLs
 };
 
 const CustomSlider = ({ images }: CustomSliderProps) => {
 	return (
-		<div className="slider-container w-full max-w-screen h-content ">
+		<div className="slider-container w-full max-w-screen h-content max-h-content p-4">
 			<Slider {...settings}>
 				{images.map((image, index) => (
 					<div
@@ -17,8 +17,8 @@ const CustomSlider = ({ images }: CustomSliderProps) => {
 						className="flex justify-center items-center w-1/2 h-content p-4"
 					>
 						<ImageWithFallback
-							src={image.img}
-							alt={image.label ? image.label : ""}
+							src={image.img || image.src || ""}
+							alt={image.label || image.alt || ""}
 							className="w-full h-auto rounded-lg shadow-lg"
 							width={500}
 							height={600}

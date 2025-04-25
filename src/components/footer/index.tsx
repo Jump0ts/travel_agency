@@ -1,19 +1,36 @@
 import { Facebook, Instagram, Mail } from "@mui/icons-material";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { useModal } from "@/context/modal";
 
 const Footer = () => {
 	const { t } = useTranslation();
+	const { setShowCookiePolicy, setShowLegalWarning, setShowPrivacyPolicy } =
+		useModal();
+
 	return (
 		<footer className="bg-orange-100 text-black py-4 border-t-2 border-gray-200 mt-auto">
-			<div className="container mx-auto text-center">
-				<Link href="/privacyPolicy" className="text-black hover:text-gray-800">
+			<div className="container mx-auto text-center width-full">
+				<span
+					className="text-black hover:text-gray-800 cursor-pointer"
+					onClick={() => setShowPrivacyPolicy(true)}
+				>
 					{t("components.footer.privacyPolicy")}
-				</Link>
+				</span>
 				<span className="mx-2">|</span>
-				<Link href="/cookiePolicy" className="text-black hover:text-gray-800">
+				<span
+					className="text-black hover:text-gray-800 cursor-pointer"
+					onClick={() => setShowCookiePolicy(true)}
+				>
 					{t("components.footer.cookiePolicy")}
-				</Link>
+				</span>
+				<span className="mx-2">|</span>
+				<span
+					className="text-black hover:text-gray-800 cursor-pointer"
+					onClick={() => setShowLegalWarning(true)}
+				>
+					{t("components.footer.legalWarning")}
+				</span>
 			</div>
 			<div className="container mx-auto text-center">
 				<Link
