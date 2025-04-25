@@ -50,7 +50,18 @@
       300: "#E0E0E0",
       400: "#F0F0F0",
       500: "#FFFFFF",
-    }
+    },
+    gray: {
+      100: "#F0F0F0",
+      200: "#E0E0E0",
+      300: "#CFCFCF",
+      400: "#BFBFBF",
+      500: "#9E9E9E",
+      600: "#7E7E7E",
+      700: "#5E5E5E",
+      800: "#333333",
+      900: "#1E1E1E",
+    },
   },
 }
 
@@ -79,4 +90,20 @@ body {
 .carousel-container {
   width: 80%;
   margin: auto;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .animate-marquee {
+  display: inline-block;
+  animation: marquee 10s linear infinite;
+  }
 }
