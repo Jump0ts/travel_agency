@@ -8,7 +8,7 @@ export const SPORTS_TRIPS_ENUM = [
 ] as const;
 
 export const SPORTS_TRIPS_IMAGES = [
-	"/images/sportsTrips/sportsTripsBasket.jpg",
-	"/images/sportsTrips/sportsTripsFut.jpg",
-	"/images/sportsTrips/sportsTripsTennis.jpg",
+	"https://rsrc.redestinea.com/images/sportsTrips/sportsTripsBasket.jpg",
+	"https://rsrc.redestinea.com/images/sportsTrips/sportsTripsFut.jpg",
+	"https://rsrc.redestinea.com/images/sportsTrips/sportsTripsTennis.jpg",
 ];
