@@ -9,8 +9,12 @@ import sportsTrips from "./pages/sportsTrips";
 import cookiePolicy from "./pages/cookiePolicy";
 import contactForm from "./components/contactForm";
 import titleMetadata from "./components/titlesMetadata";
+import legalWarning from "./pages/legalWarning";
+import common from "./common";
+import offers from "./components/offers";
 
 const es = {
+	common,
 	components: {
 		navBars: {
 			topBar,
@@ -18,6 +22,7 @@ const es = {
 		footer,
 		contactForm,
 		titleMetadata,
+		offers,
 	},
 	pages: {
 		privacyPolicy,
@@ -27,6 +32,7 @@ const es = {
 		groupTrips,
 		birdwatchingTrips,
 		sportsTrips,
+		legalWarning,
 	},
 };
 

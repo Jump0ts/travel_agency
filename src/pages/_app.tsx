@@ -9,18 +9,24 @@ import Footer from "@/components/footer";
 import ScrollToTopButton from "@/components/scrollToTopButton";
 import CookieBanner from "@/components/cookieBanner";
 import Head from "next/head";
+import { ModalProvider } from "@/context/modal";
+import OffersProvider from "@/context/offers";
 
 function App({ Component, pageProps }: AppProps) {
 	return (
 		<div className="flex flex-col min-h-screen w-full">
 			<Head>
-				<meta name="viewport" content="viewport-fit=cover" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<CookieBanner />
-			<TopBar />
-			<Component {...pageProps} />
-			<ScrollToTopButton />
-			<Footer />
+			<OffersProvider>
+				<ModalProvider>
+					<CookieBanner />
+					<TopBar />
+					<Component {...pageProps} />
+					<ScrollToTopButton />
+					<Footer />
+				</ModalProvider>
+			</OffersProvider>
 		</div>
 	);
 }
