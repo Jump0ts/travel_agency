@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./styles.module.css";
 import { poppins500 } from "@/ui/fonts";
 import { useTranslation } from "react-i18next";
-import Link from "next/link";
+import { useModal } from "@/context/modal";
 
 type ContactFormProps = {
 	subject: string;
@@ -13,29 +13,33 @@ type ContactFormProps = {
 const ContactForm = ({ subject }: ContactFormProps) => {
 	const [sent, setSent] = useState(false);
 	const [privacyPolicy, setPrivacyPolicy] = useState(false);
+	const { setShowPrivacyPolicy } = useModal();
 	const [error, setError] = useState("");
 	const { t } = useTranslation();
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
-
-		const res = await fetch("/api/contact", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				name: formData.get("name"),
-				email: formData.get("email"),
-				phone: formData.get("phone"),
-				message: formData.get("message"),
-				subject: subject,
-			}),
-		});
-
-		if (res.ok) {
-			setSent(true);
+		if (privacyPolicy) {
+			const res = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					name: formData.get("name"),
+					email: formData.get("email"),
+					phone: formData.get("phone"),
+					message: formData.get("message"),
+					subject: subject,
+				}),
+			});
+			if (res.ok) {
+				setSent(true);
+				setError("");
+			} else {
+				setError(t("components.contactForm.error"));
+			}
 		} else {
-			setError(t("components.contactForm.error"));
+			setError(t("components.contactForm.errorsCheck"));
 		}
 	};
 
@@ -98,9 +102,12 @@ const ContactForm = ({ subject }: ContactFormProps) => {
 						}}
 					/>
 					{t("components.contactForm.readAndAccept")}
-					<Link href="/privacyPolicy" className="text-blue-600 underline">
+					<span
+						onClick={() => setShowPrivacyPolicy(true)}
+						className="text-blue-600 cursor-pointer hover:underline"
+					>
 						{t("components.contactForm.privacyPolicy")}
-					</Link>
+					</span>
 				</p>
 				<Button
 					type="submit"
