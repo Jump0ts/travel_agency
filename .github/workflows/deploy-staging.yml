@@ -25,5 +25,6 @@ jobs:
             cd redestinea/travel_agency_staging/travel_agency
             git pull origin pre
             docker-compose -f docker/docker-compose.staging.yml -p redestinea_staging down
-            docker-compose -f docker/docker-compose.staging.yml build --no-cache
+            docker rmi -f redestinea_staging_app
+            docker-compose -f docker/docker-compose.staging.yml build --no-cache --build-arg BUILD_TIMESTAMP=$(date +%s)
             docker-compose -f docker/docker-compose.staging.yml -p redestinea_staging up -d
