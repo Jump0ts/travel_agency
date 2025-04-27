@@ -12,7 +12,9 @@ const Offers = () => {
 		<div
 			className={`${poppins600.className} flex flex-col items-center justify-center w-full h-full p-4`}
 		>
-			<h1 className={`${poppins700.className} text-4xl text-blue-400`}>
+			<h1
+				className={`${poppins700.className} text-3xl  md:text-4xl text-blue-400`}
+			>
 				{offers?.title}
 			</h1>
 			<p className="text-xl">{offers?.price.toUpperCase()}</p>
@@ -39,7 +41,6 @@ const Offers = () => {
 					);
 				})}
 			</p>
-			<CustomSlider images={offers?.images || []} />
 			<p className="text-2xl text-gray-600">{offers?.capacity}</p>
 			<Link
 				href="/contact"
@@ -47,6 +48,9 @@ const Offers = () => {
 			>
 				{t("components.offers.contactUs")}
 			</Link>
+			<div className="flex flex-col gap-2 mt-4 mb-6 w-full flex-col md:flex-row items-center justify-center">
+				<CustomSlider images={offers?.images || []} width={200} height={300} />
+			</div>
 		</div>
 	);
 };
