@@ -30,5 +30,6 @@ jobs:
             cd redestinea/travel_agency_prod/travel_agency/
             git pull origin master
             docker-compose -f docker/docker-compose.prod.yml -p redestinea_prod down
-            docker-compose -f docker/docker-compose.prod.yml build --no-cache
+            docker rmi redestinea_prod_app
+            docker-compose -f docker/docker-compose.prod.yml build --no-cache --build-arg BUILD_TIMESTAMP=$(date +%s)
             docker-compose -f docker/docker-compose.prod.yml -p redestinea_prod up -d
