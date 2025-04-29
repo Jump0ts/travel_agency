@@ -18,7 +18,6 @@ export default function Home() {
 	const { t } = useTranslation();
 	const { offers } = useOffers();
 	const { setShowOffersModal } = useModal();
-	console.log("offers", offers);
 
 	return (
 		<>
