@@ -87,7 +87,7 @@ export default function Home() {
 							setShowOffersModal(true);
 						}}
 					>
-						<div className="marquee-content whitespace-nowrap text-lg font-bold">
+						<div className="marquee-content whitespace-nowrap text-lg font-bold ml-4">
 							<span>
 								{`${t("pages.home.offers.title")} | `}
 								<span className="text-gray-800 hidden md:inline">
@@ -96,8 +96,11 @@ export default function Home() {
 										{t("pages.home.offers.seeMore")}
 									</span>
 								</span>
+								<span className="text-blue-800 inline md:hidden hover:underline">
+									{t("pages.home.offers.seeMore")}
+								</span>
 							</span>
-							<span>
+							<span className="hidden md:inline">
 								{`${t("pages.home.offers.title")} | `}
 								<span className="text-gray-800 hidden md:inline">
 									{`${t("pages.home.offers.description")} | `}

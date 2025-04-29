@@ -104,15 +104,17 @@ body {
 }
 
 /* Contenedor que se mueve (contiene el texto duplicado) */
-.marquee-content {
-  display: flex; /* Para que la animación funcione bien con transform */
-  width: fit-content;
-  /* Aplica la animación: nombre, duración, tipo, repetición */
-  animation: marquee-animation 20s linear infinite;
-   /* Pausar al pasar el ratón (opcional) */
-  /* &:hover {
-       animation-play-state: paused;
-     } */
+@media (min-width: 768px) {
+  .marquee-content {
+    display: flex; /* Para que la animación funcione bien con transform */
+    width: fit-content;
+    /* Aplica la animación: nombre, duración, tipo, repetición */
+    animation: marquee-animation 20s linear infinite;
+    /* Pausar al pasar el ratón (opcional) */
+    /* &:hover {
+        animation-play-state: paused;
+      } */
+  }
 }
 
 .marquee-content span {
