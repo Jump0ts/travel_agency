@@ -1,16 +1,20 @@
 #!/bin/sh
 
-COMMIT_MSG_FILE=$1
-COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+COMMIT_MSG_FILE="$1"
 
-echo "🔍 Checking commit message: $COMMIT_MSG"
-
-regex="^(feat|hotfix)\([^)]+\): .+"
-
-if ! echo "$COMMIT_MSG" | grep -Eq "$regex"; then
-  echo "❌ Commit message inválido."
-  echo "Debe seguir el formato: feat(nombre): descripcion o hotfix(nombre): descripcion"
+if [ -z "$COMMIT_MSG_FILE" ]; then
+  echo "❌ No commit message file provided"
   exit 1
 fi
 
-echo "✅ Commit message válido."
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+PATTERN='^(feat|hotfix)\([a-zA-Z0-9_-]+\): .+'
+
+if ! echo "$COMMIT_MSG" | grep -Eq "$PATTERN"; then
+  echo "❌ Invalid commit message format."
+  echo "✅ Allowed formats:"
+  echo "   feat(nombre): descripción"
+  echo "   hotfix(nombre): descripción"
+  exit 1
+fi
