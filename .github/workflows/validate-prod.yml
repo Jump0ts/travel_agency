@@ -34,7 +34,7 @@ jobs:
 
       - name: Check required env variables
         run: |
-          required_vars=(BREVO_API_KEY BREVO_TRACKER_KEY NEXT_PUBLIC_RSRC_REDESTINEA_ULR NEXT_PUBLIC_BASE_URL)
+          required_vars=(BREVO_API_KEY BREVO_TRACKER_KEY NEXT_PUBLIC_RSRC_REDESTINEA_URL NEXT_PUBLIC_BASE_URL)
           for var in "${required_vars[@]}"; do
             if [ -z "${!var}" ]; then
               echo "❌ Missing env variable: $var"
@@ -44,5 +44,5 @@ jobs:
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           BREVO_TRACKER_KEY: ${{ secrets.BREVO_TRACKER_KEY }}
-          NEXT_PUBLIC_RSRC_REDESTINEA_ULR: ${{ secrets.NEXT_PUBLIC_RSRC_REDESTINEA_ULR }}
+          NEXT_PUBLIC_RSRC_REDESTINEA_URL: ${{ secrets.NEXT_PUBLIC_RSRC_REDESTINEA_URL }}
           NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
