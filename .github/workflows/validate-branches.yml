@@ -1,0 +1,48 @@
+name: Validate branch naming and source
+
+on:
+  pull_request:
+    branches: [develop, pre, master]
+
+jobs:
+  validate_branch:
+    runs-on: ubuntu-latest
+    name: Validate branch naming and source
+    steps:
+      - name: Check branch name
+        run: |
+          TARGET_BRANCH="${{ github.base_ref }}"
+          SOURCE_BRANCH="${{ github.head_ref }}"
+
+          echo "Source: $SOURCE_BRANCH"
+          echo "Target: $TARGET_BRANCH"
+
+          # PRs a master solo desde pre
+          if [[ "$TARGET_BRANCH" == "master" && "$SOURCE_BRANCH" != "pre" ]]; then
+            echo "❌ PRs to master only allowed from pre"
+            exit 1
+          fi
+
+          # PRs a pre solo desde develop o hotfix/RDAGENCY-*
+          if [[ "$TARGET_BRANCH" == "pre" && ! "$SOURCE_BRANCH" =~ ^(develop|hotfix/RDAGENCY-*)$ ]]; then
+            echo "❌ PRs to pre only allowed from develop or hotfix/RDAGENCY-*"
+            exit 1
+          fi
+
+          # PRs a develop solo desde feature/RDAGENCY-* o hotfix/RDAGENCY-*
+          if [[ "$TARGET_BRANCH" == "develop" && ! "$SOURCE_BRANCH" =~ ^(feature/RDAGENCY-*|hotfix/RDAGENCY-*)$ ]]; then
+            echo "❌ PRs to develop only allowed from feature/RDAGENCY-* or hotfix/RDAGENCY-*"
+            exit 1
+          fi
+
+          # Ramas feature deben seguir el patrón feature/RDAGENCY-*
+          if [[ "$SOURCE_BRANCH" =~ ^feature/.*$ && ! "$SOURCE_BRANCH" =~ ^feature/RDAGENCY-*$ ]]; then
+            echo "❌ feature/* branches must follow the pattern feature/RDAGENCY-*"
+            exit 1
+          fi
+
+          # Ramas hotfix deben seguir el patrón hotfix/RDAGENCY-*
+          if [[ "$SOURCE_BRANCH" =~ ^hotfix/.*$ && ! "$SOURCE_BRANCH" =~ ^hotfix/RDAGENCY-*$ ]]; then
+            echo "❌ hotfix/* branches must follow the pattern hotfix/RDAGENCY-*"
+            exit 1
+          fi
