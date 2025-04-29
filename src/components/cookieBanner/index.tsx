@@ -19,8 +19,6 @@ export default function CookieBanner() {
 	}, []);
 
 	useEffect(() => {
-		console.log("Cookie consent value:", getCookieConsentValue("userConsent"));
-
 		if (!hasConsent) return;
 
 		// Cargar Google Analytics (gtag)

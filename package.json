@@ -8,7 +8,8 @@
 		"postbuild": "next-sitemap",
 		"start": "next start -p 3000",
 		"lint": "next lint",
-		"type-check": "tsc --noEmit"
+		"type-check": "tsc --noEmit",
+		"prepare": "husky"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.14.0",
@@ -41,6 +42,7 @@
 		"@types/uuid": "^10.0.0",
 		"eslint": "^9",
 		"eslint-config-next": "15.2.2",
+		"husky": "^9.1.7",
 		"tailwindcss": "^4.0.14",
 		"typescript": "^5"
 	}
