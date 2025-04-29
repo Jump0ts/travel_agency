@@ -8,6 +8,7 @@ on:
 
 jobs:
   validate-env:
+    name: Validate PR/Push to Staging or Development
     runs-on: ubuntu-latest
     environment: Staging
     steps:
