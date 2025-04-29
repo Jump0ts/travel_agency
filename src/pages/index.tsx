@@ -82,18 +82,29 @@ export default function Home() {
 				</div>
 				{offers && (
 					<div
-						className={`flex flex-col w-full gap-4 mt-4 overflow-hidden ${poppins700.className} bg-orange-500 rounded-lg shadow-lg p-4 cursor-pointer`}
+						className={`marquee-container flex flex-col w-full gap-4 mt-4 overflow-hidden ${poppins700.className} bg-orange-500 rounded-lg shadow-lg p-4 cursor-pointer`}
 						onClick={() => {
 							setShowOffersModal(true);
 						}}
 					>
-						<div className="animate-marquee whitespace-nowrap text-lg font-bold">
-							{`${t("pages.home.offers.title")} | `}
-							<span className="text-gray-800 hidden md:inline">
-								{`${t("pages.home.offers.description")} | `}
+						<div className="marquee-content whitespace-nowrap text-lg font-bold">
+							<span>
+								{`${t("pages.home.offers.title")} | `}
+								<span className="text-gray-800 hidden md:inline">
+									{`${t("pages.home.offers.description")} | `}
+									<span className="text-blue-800 hover:underline">
+										{t("pages.home.offers.seeMore")}
+									</span>
+								</span>
 							</span>
-							<span className="text-blue-800 hover:underline">
-								{t("pages.home.offers.seeMore")}
+							<span>
+								{`${t("pages.home.offers.title")} | `}
+								<span className="text-gray-800 hidden md:inline">
+									{`${t("pages.home.offers.description")} | `}
+									<span className="text-blue-800 hover:underline">
+										{t("pages.home.offers.seeMore")}
+									</span>
+								</span>
 							</span>
 						</div>
 					</div>

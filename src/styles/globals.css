@@ -92,18 +92,46 @@ body {
   margin: auto;
 }
 
-@keyframes marquee {
+
+/* Contenedor visible */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 10px 0;
+  position: relative;
+}
+
+/* Contenedor que se mueve (contiene el texto duplicado) */
+.marquee-content {
+  display: flex; /* Para que la animación funcione bien con transform */
+  width: fit-content;
+  /* Aplica la animación: nombre, duración, tipo, repetición */
+  animation: marquee-animation 20s linear infinite;
+   /* Pausar al pasar el ratón (opcional) */
+  /* &:hover {
+       animation-play-state: paused;
+     } */
+}
+
+.marquee-content span {
+  white-space: nowrap;
+  padding-right: 2rem;
+}
+
+@keyframes marquee-animation {
   0% {
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .animate-marquee {
   display: inline-block;
   animation: marquee 10s linear infinite;
   }
-}
+} */
