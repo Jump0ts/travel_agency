@@ -8,6 +8,7 @@ on:
 
 jobs:
   validate-env:
+    name: Validate PR/Push to Production
     runs-on: ubuntu-latest
     environment: Production
     steps:
