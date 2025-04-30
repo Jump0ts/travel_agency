@@ -42,8 +42,7 @@ const CivitatisWidget = ({ zone }: ICivitatisWidget) => {
               checkOrigin: false,
               initCallback: function (iframe: HTMLIFrameElement) {
                 setTimeout(() => {
-                  const resizeEvent = document.createEvent("UIEvents");
-                  resizeEvent.initUIEvent("resize", true, false, window, 0);
+                  const resizeEvent = new Event("resize", { bubbles: true, cancelable: false });
                   iframe.dispatchEvent(resizeEvent);
                 });
               },
