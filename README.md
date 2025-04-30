@@ -8,6 +8,7 @@ Bienvenido/a a **Redestinea**, un proyecto creado como parte de mi portfolio pro
 - 🟦 TypeScript
 - 🎨 Tailwind CSS
 - 🐳 Docker
+- 🐕 Husky
 
 ## 🚀 Demo en producción
 
