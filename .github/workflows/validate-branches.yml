@@ -2,47 +2,47 @@ name: Validate branch naming and source
 
 on:
   pull_request:
-    branches: [develop, pre, master]
+    branches: [pre, master, develop]
 
 jobs:
   validate_branch:
     runs-on: ubuntu-latest
     name: Validate branch naming and source
     steps:
-      - name: Check branch name
+      - name: Check branch name and origin
         run: |
           TARGET_BRANCH="${{ github.base_ref }}"
           SOURCE_BRANCH="${{ github.head_ref }}"
 
-          echo "Source: $SOURCE_BRANCH"
-          echo "Target: $TARGET_BRANCH"
+          echo "🔎 Source: $SOURCE_BRANCH"
+          echo "🔎 Target: $TARGET_BRANCH"
 
-          # PRs a master solo desde pre
+          # Solo se permite PR a master desde pre
           if [[ "$TARGET_BRANCH" == "master" && "$SOURCE_BRANCH" != "pre" ]]; then
             echo "❌ PRs to master only allowed from pre"
             exit 1
           fi
 
-          # PRs a pre solo desde develop o hotfix/RDAGENCY-*
-          if [[ "$TARGET_BRANCH" == "pre" && ! "$SOURCE_BRANCH" =~ ^(develop|hotfix/RDAGENCY-*)$ ]]; then
+          # Solo se permite PR a pre desde develop o hotfix/*
+          if [[ "$TARGET_BRANCH" == "pre" && ! "$SOURCE_BRANCH" =~ ^(develop|hotfix/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?)$ ]]; then
             echo "❌ PRs to pre only allowed from develop or hotfix/RDAGENCY-*"
             exit 1
           fi
 
-          # PRs a develop solo desde feature/RDAGENCY-* o hotfix/RDAGENCY-*
-          if [[ "$TARGET_BRANCH" == "develop" && ! "$SOURCE_BRANCH" =~ ^(feature/RDAGENCY-*|hotfix/RDAGENCY-*)$ ]]; then
-            echo "❌ PRs to develop only allowed from feature/RDAGENCY-* or hotfix/RDAGENCY-*"
-            exit 1
-          fi
-
-          # Ramas feature deben seguir el patrón feature/RDAGENCY-*
+          # feature/* solo desde develop
           if [[ "$SOURCE_BRANCH" =~ ^feature/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ && "$GITHUB_BASE_REF" != "develop" ]]; then
-            echo "❌ feature/* branches must follow the pattern feature/RDAGENCY-*"
+            echo "❌ feature/* branches must originate from develop"
             exit 1
           fi
 
-          # Ramas hotfix deben seguir el patrón hotfix/RDAGENCY-*
-          if [[ "$SOURCE_BRANCH" =~ ^hotfix/.*$ && ! "$SOURCE_BRANCH" =~ ^hotfix/RDAGENCY-*$ ]]; then
-            echo "❌ hotfix/* branches must follow the pattern hotfix/RDAGENCY-*"
+          # hotfix/* solo desde develop o pre
+          if [[ "$SOURCE_BRANCH" =~ ^hotfix/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ && ! "$GITHUB_BASE_REF" =~ ^(develop|pre)$ ]]; then
+            echo "❌ hotfix/* branches must originate from develop or pre"
+            exit 1
+          fi
+
+          # Si se intenta hacer PR a develop desde rama que no sea feature o hotfix
+          if [[ "$TARGET_BRANCH" == "develop" && ! "$SOURCE_BRANCH" =~ ^(feature|hotfix)/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ ]]; then
+            echo "❌ Only feature/* or hotfix/* branches allowed to merge into develop"
             exit 1
           fi
