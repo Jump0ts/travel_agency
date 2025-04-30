@@ -18,7 +18,6 @@ export default function Home() {
 	const { t } = useTranslation();
 	const { offers } = useOffers();
 	const { setShowOffersModal } = useModal();
-	console.log("offers", offers);
 
 	return (
 		<>
@@ -41,7 +40,7 @@ export default function Home() {
 				<meta property="og:type" content="website" />
 				<meta
 					property="og:image"
-					content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/home/Marian-3.jpg`}
+					content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_URL}images/home/Marian-3.jpg`}
 				/>
 			</Head>
 			<div className="flex flex-col items-center justify-center w-full h-full p-4">

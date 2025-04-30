@@ -1,0 +1,48 @@
+name: Validate before deploy/merge production
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  validate-env:
+    name: Validate PR/Push to Production
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Build app
+        run: npm run build
+
+      - name: Check required env variables
+        run: |
+          required_vars=(BREVO_API_KEY BREVO_TRACKER_KEY NEXT_PUBLIC_RSRC_REDESTINEA_URL NEXT_PUBLIC_BASE_URL)
+          for var in "${required_vars[@]}"; do
+            if [ -z "${!var}" ]; then
+              echo "❌ Missing env variable: $var"
+              exit 1
+            fi
+          done
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_TRACKER_KEY: ${{ secrets.BREVO_TRACKER_KEY }}
+          NEXT_PUBLIC_RSRC_REDESTINEA_URL: ${{ secrets.NEXT_PUBLIC_RSRC_REDESTINEA_URL }}
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
