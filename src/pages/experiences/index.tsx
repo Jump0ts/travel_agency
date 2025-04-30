@@ -1,5 +1,5 @@
 import CivitatisWidget from "@/components/civitatisWidget";
-import { CIVITATIS_CITIES_ENUM } from "@/lib/pagesEnums/civtitatisCitiesEnum";
+import { CIVITATIS_CITIES_ENUM } from "@/lib/pagesEnums/civititatisCitiesEnum";
 import { poppins400 } from "@/ui/fonts";
 import { Button, MenuItem, Select, Typography } from "@mui/material";
 import Head from "next/head";
