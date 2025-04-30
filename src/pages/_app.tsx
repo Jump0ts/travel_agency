@@ -11,6 +11,7 @@ import CookieBanner from "@/components/cookieBanner";
 import Head from "next/head";
 import { ModalProvider } from "@/context/modal";
 import OffersProvider from "@/context/offers";
+import ServiceWorkerBrevo from "@/components/serviceWorkerBrevo";
 
 function App({ Component, pageProps }: AppProps) {
 	return (
@@ -21,6 +22,7 @@ function App({ Component, pageProps }: AppProps) {
 			<OffersProvider>
 				<ModalProvider>
 					<CookieBanner />
+					<ServiceWorkerBrevo />
 					<TopBar />
 					<Component {...pageProps} />
 					<ScrollToTopButton />
