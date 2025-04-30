@@ -39,7 +39,7 @@ const Experiences = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_URL}images/experiences/experiencesDisney.jpg`}
+          content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_URL}images/experiences/experience.jpg`}
         />
       </Head>
       <div
