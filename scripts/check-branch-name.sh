@@ -4,7 +4,7 @@
 BRANCH_NAME=$(git symbolic-ref --short HEAD)
 
 # Define el patrón de nombres válidos para las ramas
-VALID_BRANCH_REGEX="^(feature|hotfix)\/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$"
+VALID_BRANCH_REGEX="^(feature|hotfix)\/RDAGENCY-[0-9]+(_.*+)?$"
 
 # Verifica si la rama cumple con el patrón
 if [[ ! "$BRANCH_NAME" =~ $VALID_BRANCH_REGEX ]]; then
