@@ -1,0 +1,48 @@
+name: Validate branch naming and source
+
+on:
+  pull_request:
+    branches: [pre, master, develop]
+
+jobs:
+  validate_branch:
+    runs-on: ubuntu-latest
+    name: Validate branch naming and source
+    steps:
+      - name: Check branch name and origin
+        run: |
+          TARGET_BRANCH="${{ github.base_ref }}"
+          SOURCE_BRANCH="${{ github.head_ref }}"
+
+          echo "🔎 Source: $SOURCE_BRANCH"
+          echo "🔎 Target: $TARGET_BRANCH"
+
+          # Solo se permite PR a master desde pre
+          if [[ "$TARGET_BRANCH" == "master" && "$SOURCE_BRANCH" != "pre" ]]; then
+            echo "❌ PRs to master only allowed from pre"
+            exit 1
+          fi
+
+          # Solo se permite PR a pre desde develop o hotfix/*
+          if [[ "$TARGET_BRANCH" == "pre" && ! "$SOURCE_BRANCH" =~ ^(develop|hotfix/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?)$ ]]; then
+            echo "❌ PRs to pre only allowed from develop or hotfix/RDAGENCY-*"
+            exit 1
+          fi
+
+          # feature/* solo desde develop
+          if [[ "$SOURCE_BRANCH" =~ ^feature/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ && "$GITHUB_BASE_REF" != "develop" ]]; then
+            echo "❌ feature/* branches must originate from develop"
+            exit 1
+          fi
+
+          # hotfix/* solo desde develop o pre
+          if [[ "$SOURCE_BRANCH" =~ ^hotfix/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ && ! "$GITHUB_BASE_REF" =~ ^(develop|pre)$ ]]; then
+            echo "❌ hotfix/* branches must originate from develop or pre"
+            exit 1
+          fi
+
+          # Si se intenta hacer PR a develop desde rama que no sea feature o hotfix
+          if [[ "$TARGET_BRANCH" == "develop" && ! "$SOURCE_BRANCH" =~ ^(feature|hotfix)/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ ]]; then
+            echo "❌ Only feature/* or hotfix/* branches allowed to merge into develop"
+            exit 1
+          fi
