@@ -49,7 +49,7 @@ const GroupTrips = () => {
 				<meta property="og:type" content="website" />
 				<meta
 					property="og:image"
-					content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/groupTrips/groupTripsDisney.jpg`}
+					content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_URL}images/groupTrips/groupTripsDisney.jpg`}
 				/>
 			</Head>
 			<StandardPageRenderer

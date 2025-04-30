@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sh scripts/check-branch-name.sh
