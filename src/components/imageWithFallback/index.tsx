@@ -13,7 +13,7 @@ const ImageWithFallback = ({
 	...props
 }: ImageWithFallbackProps) => {
 	const [imgSrc, setImgSrc] = useState(
-		`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_ULR}images/${src}`
+		`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_URL}images/${src}`
 	);
 
 	return (

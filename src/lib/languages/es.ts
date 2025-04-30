@@ -12,28 +12,30 @@ import titleMetadata from "./components/titlesMetadata";
 import legalWarning from "./pages/legalWarning";
 import common from "./common";
 import offers from "./components/offers";
+import experiences from "./pages/experiences";
 
 const es = {
-	common,
-	components: {
-		navBars: {
-			topBar,
-		},
-		footer,
-		contactForm,
-		titleMetadata,
-		offers,
-	},
-	pages: {
-		privacyPolicy,
-		cookiePolicy,
-		home,
-		customTrips,
-		groupTrips,
-		birdwatchingTrips,
-		sportsTrips,
-		legalWarning,
-	},
+  common,
+  components: {
+    navBars: {
+      topBar,
+    },
+    footer,
+    contactForm,
+    titleMetadata,
+    offers,
+  },
+  pages: {
+    privacyPolicy,
+    cookiePolicy,
+    home,
+    customTrips,
+    groupTrips,
+    birdwatchingTrips,
+    sportsTrips,
+    legalWarning,
+    experiences,
+  },
 };
 
 export default es;
