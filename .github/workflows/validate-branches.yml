@@ -24,25 +24,25 @@ jobs:
           fi
 
           # Solo se permite PR a pre desde develop o hotfix/*
-          if [[ "$TARGET_BRANCH" == "pre" && ! "$SOURCE_BRANCH" =~ ^(develop|hotfix/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?)$ ]]; then
+          if [[ "$TARGET_BRANCH" == "pre" && ! "$SOURCE_BRANCH" =~ ^(develop|hotfix/RDAGENCY-[0-9]+(_.*+)?)$ ]]; then
             echo "❌ PRs to pre only allowed from develop or hotfix/RDAGENCY-*"
             exit 1
           fi
 
           # feature/* solo desde develop
-          if [[ "$SOURCE_BRANCH" =~ ^feature/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ && "$GITHUB_BASE_REF" != "develop" ]]; then
+          if [[ "$SOURCE_BRANCH" =~ ^feature/RDAGENCY-[0-9]+(_.*+)?$ && "$GITHUB_BASE_REF" != "develop" ]]; then
             echo "❌ feature/* branches must originate from develop"
             exit 1
           fi
 
           # hotfix/* solo desde develop o pre
-          if [[ "$SOURCE_BRANCH" =~ ^hotfix/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ && ! "$GITHUB_BASE_REF" =~ ^(develop|pre)$ ]]; then
+          if [[ "$SOURCE_BRANCH" =~ ^hotfix/RDAGENCY-[0-9]+(_.*+)?$ && ! "$GITHUB_BASE_REF" =~ ^(develop|pre)$ ]]; then
             echo "❌ hotfix/* branches must originate from develop or pre"
             exit 1
           fi
 
           # Si se intenta hacer PR a develop desde rama que no sea feature o hotfix
-          if [[ "$TARGET_BRANCH" == "develop" && ! "$SOURCE_BRANCH" =~ ^(feature|hotfix)/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ ]]; then
+          if [[ "$TARGET_BRANCH" == "develop" && ! "$SOURCE_BRANCH" =~ ^(feature|hotfix)/RDAGENCY-[0-9]+(_.*+)?$ ]]; then
             echo "❌ Only feature/* or hotfix/* branches allowed to merge into develop"
             exit 1
           fi
