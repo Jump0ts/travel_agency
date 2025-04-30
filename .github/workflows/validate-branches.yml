@@ -36,7 +36,7 @@ jobs:
           fi
 
           # Ramas feature deben seguir el patrón feature/RDAGENCY-*
-          if [[ "$SOURCE_BRANCH" =~ ^feature/.*$ && ! "$SOURCE_BRANCH" =~ ^feature/RDAGENCY-*$ ]]; then
+          if [[ "$SOURCE_BRANCH" =~ ^feature/RDAGENCY-[0-9]+(_[a-zA-Z0-9\-]+)?$ && "$GITHUB_BASE_REF" != "develop" ]]; then
             echo "❌ feature/* branches must follow the pattern feature/RDAGENCY-*"
             exit 1
           fi
