@@ -1,3 +1,5 @@
+import { BRAND } from "@/config/brand";
+
 const topBar = {
   home: "Home",
   popularDestinations: "Destinos populares",
@@ -7,7 +9,7 @@ const topBar = {
   sportsTrips: "Viajes deportivos",
   contact: "Contacto",
   experiences: "Experiencias",
-  news: "**¡Estamos creando nuevas experiencias! Suscríbete a nuestro boletín para recibir las últimas noticias y ofertas.**",
+  news: BRAND.demoNotice,
 };
 
 export default topBar;

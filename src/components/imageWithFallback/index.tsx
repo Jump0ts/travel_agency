@@ -8,7 +8,7 @@ type ImageWithFallbackProps = {
 } & ImageProps;
 
 const ImageWithFallback = ({
-  fallback = "fallbackIMG.png",
+  fallback = assetSrc("images/fallbackIMG.png"),
   alt,
   src,
   ...props
