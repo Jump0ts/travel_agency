@@ -1,9 +1,8 @@
 // Single source of truth for the (fictional) brand used by this portfolio demo.
 // Changing the agency name, contact or links only requires editing this file.
 export const BRAND = {
-  name: "Brújula Viajes",
-  legalName:
-    "Brújula Viajes (proyecto de demostración sin actividad comercial)",
+  name: "Mochila",
+  legalName: "Mochila (proyecto de demostración sin actividad comercial)",
   contactEmail: "hola@example.com",
   logo: "brand/logo.svg",
   links: {

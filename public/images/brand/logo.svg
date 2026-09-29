@@ -1,10 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" role="img" aria-label="Brújula Viajes">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" role="img" aria-label="Mochila">
   <g transform="translate(8 6)">
     <circle cx="24" cy="24" r="22" fill="#fb923c"/>
-    <circle cx="24" cy="24" r="16" fill="none" stroke="#fff" stroke-width="2.5"/>
-    <path d="M24 9 L28.5 24 L24 39 L19.5 24 Z" fill="#fff"/>
-    <path d="M24 9 L28.5 24 L19.5 24 Z" fill="#7c2d12"/>
+    <path d="M19.5 12 a4.5 4.5 0 0 1 9 0" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="13.5" y="12" width="21" height="25" rx="7" fill="#fff"/>
+    <rect x="17.5" y="24.5" width="13" height="8" rx="2.5" fill="#7c2d12"/>
+    <line x1="17.5" y1="27.5" x2="30.5" y2="27.5" stroke="#fb923c" stroke-width="1.5"/>
   </g>
-  <text x="62" y="30" font-family="Poppins, Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2937">Brújula</text>
+  <text x="62" y="30" font-family="Poppins, Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2937">Mochila</text>
   <text x="62" y="48" font-family="Poppins, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="3" fill="#ea580c">VIAJES</text>
 </svg>
