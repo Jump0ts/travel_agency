@@ -28,6 +28,12 @@ variable "ssh_public_key_path" {
   default     = "~/.ssh/do_travel_agency.pub"
 }
 
+variable "ci_ssh_public_key_path" {
+  description = "Public key GitHub Actions uses to deploy (separate, passphrase-less key that can be revoked on its own)."
+  type        = string
+  default     = "~/.ssh/do_travel_agency_ci.pub"
+}
+
 variable "admin_ssh_cidrs" {
   description = "IP ranges allowed to reach SSH (port 22). GitHub Actions deploys over SSH, so it stays open; access is key-only."
   type        = list(string)

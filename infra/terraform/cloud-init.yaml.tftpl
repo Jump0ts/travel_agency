@@ -16,6 +16,8 @@ users:
     lock_passwd: true
     ssh_authorized_keys:
       - ${admin_public_key}
+      # CI key: no tunnels, agent forwarding or interactive shell.
+      - no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty ${ci_public_key}
 
 write_files:
   # Key-only SSH, no root login.

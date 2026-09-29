@@ -20,6 +20,7 @@ resource "digitalocean_droplet" "web" {
   # First-boot provisioning: Docker, a non-root deploy user, swap and hardened SSH.
   user_data = templatefile("${path.module}/cloud-init.yaml.tftpl", {
     admin_public_key = trimspace(file(pathexpand(var.ssh_public_key_path)))
+    ci_public_key    = trimspace(file(pathexpand(var.ci_ssh_public_key_path)))
   })
 }
 
