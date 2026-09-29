@@ -1,0 +1,46 @@
+#cloud-config
+# Runs once on the first boot of the droplet.
+
+package_update: true
+package_upgrade: true
+packages:
+  - ca-certificates
+  - curl
+  - unattended-upgrades
+  - fail2ban
+
+users:
+  - name: deploy
+    groups: [docker]
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ${admin_public_key}
+
+write_files:
+  # Key-only SSH, no root login.
+  - path: /etc/ssh/sshd_config.d/99-hardening.conf
+    content: |
+      PermitRootLogin no
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+
+runcmd:
+  # Docker Engine + Compose plugin from Docker's official repository.
+  - install -m 0755 -d /etc/apt/keyrings
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  - chmod a+r /etc/apt/keyrings/docker.asc
+  - echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) stable" > /etc/apt/sources.list.d/docker.list
+  - apt-get update
+  - apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  - usermod -aG docker deploy
+  # 1 GB swap: headroom for the brief moment two app versions run during a deploy.
+  - fallocate -l 1G /swapfile
+  - chmod 600 /swapfile
+  - mkswap /swapfile
+  - swapon /swapfile
+  - echo '/swapfile none swap sw 0 0' >> /etc/fstab
+  - mkdir -p /opt/travel-agency
+  - chown deploy:deploy /opt/travel-agency
+  - systemctl enable --now docker fail2ban
+  - systemctl restart ssh
