@@ -1,0 +1,22 @@
+{
+  "title": "Escapada a la costa gaditana",
+  "price": "Desde 390 €",
+  "howLong": "4 días / 3 noches",
+  "when": "Mayo",
+  "include": "Alojamiento, desayunos, traslados y actividades guiadas",
+  "activities": [
+    {
+      "title": "Qué haremos",
+      "points": [
+        "Ruta en kayak al atardecer",
+        "Visita guiada por el casco histórico",
+        "Día libre de playa"
+      ]
+    }
+  ],
+  "images": [
+    { "src": "offers/coast-1.jpg", "alt": "Playa al atardecer" },
+    { "src": "offers/coast-2.jpg", "alt": "Calles del casco histórico" }
+  ],
+  "capacity": "Grupo reducido de 12 personas"
+}

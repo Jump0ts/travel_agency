@@ -6,6 +6,7 @@ import { poppins500 } from "@/ui/fonts";
 import { useState } from "react";
 import { Menu, Close } from "@mui/icons-material"; // Íconos para abrir/cerrar el menú
 import ImageWithFallback from "@/components/imageWithFallback";
+import { BRAND } from "@/config/brand";
 
 const NavButtons = [
   { name: "Home", path: "/", label: "home" },
@@ -33,8 +34,8 @@ const TopBar = () => {
       </div>
       <div className="flex flex-row justify-around items-center gap-4 p-4 rounded w-full">
         <ImageWithFallback
-          src="redestinea-complete-logo.png"
-          alt="Logo"
+          src={BRAND.logo}
+          alt={`Logo de ${BRAND.name}`}
           width={200}
           height={60}
         />

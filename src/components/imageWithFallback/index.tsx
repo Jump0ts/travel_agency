@@ -1,30 +1,29 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ImageProps } from "next/image";
+import { assetSrc } from "@/config/assets";
 
 type ImageWithFallbackProps = {
-	fallback?: string;
+  fallback?: string;
 } & ImageProps;
 
 const ImageWithFallback = ({
-	fallback = "fallbackIMG.png",
-	alt,
-	src,
-	...props
+  fallback = assetSrc("images/fallbackIMG.png"),
+  alt,
+  src,
+  ...props
 }: ImageWithFallbackProps) => {
-	const [imgSrc, setImgSrc] = useState(
-		`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_URL}images/${src}`
-	);
+  const [imgSrc, setImgSrc] = useState(assetSrc(`images/${src}`));
 
-	return (
-		<Image
-			alt={alt}
-			onError={() => setImgSrc(fallback)}
-			src={imgSrc}
-			loading="lazy"
-			{...props}
-		/>
-	);
+  return (
+    <Image
+      alt={alt}
+      onError={() => setImgSrc(fallback)}
+      src={imgSrc}
+      loading="lazy"
+      {...props}
+    />
+  );
 };
 
 export default ImageWithFallback;
