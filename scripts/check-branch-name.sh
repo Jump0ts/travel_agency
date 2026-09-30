@@ -1,15 +1,12 @@
 #!/bin/sh
+# Only feature/* and hotfix/* branches can be pushed;
+# develop and master change through pull requests.
 
-# Obtiene el nombre de la rama actual
 BRANCH_NAME=$(git symbolic-ref --short HEAD)
 
-# Define el patrón de nombres válidos para las ramas
-VALID_BRANCH_REGEX="^(feature|hotfix)\/RDAGENCY-[0-9]+(_.*)?$"
-
-# Verifica si la rama cumple con el patrón
-if [[ ! "$BRANCH_NAME" =~ $VALID_BRANCH_REGEX ]]; then
+if ! printf '%s\n' "$BRANCH_NAME" | grep -Eq '^(feature|hotfix)/[a-z0-9._-]+$'; then
   echo "❌ Invalid branch name: $BRANCH_NAME"
-  echo "Branch names must follow this pattern: feature/RDAGENCY-* or hotfix/RDAGENCY-*"
+  echo "Use feature/<name> or hotfix/<name> (lowercase letters, digits, . _ -)"
   exit 1
 fi
 
