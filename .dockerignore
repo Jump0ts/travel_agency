@@ -1,0 +1,13 @@
+.git
+.github
+.husky
+.next
+node_modules
+out
+infra
+deploy
+docker
+nginx
+src/tests
+*.log
+.env*

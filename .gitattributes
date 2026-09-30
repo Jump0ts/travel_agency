@@ -1,3 +1,4 @@
 # Files executed on Linux servers must keep LF line endings
 infra/** text eol=lf
 *.sh text eol=lf
+deploy/** text eol=lf
