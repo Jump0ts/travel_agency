@@ -4,6 +4,11 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Image tag to deploy (e.g. sha-1a2b3c4). Empty = build and deploy the current commit."
+        required: false
+        default: ""
 
 concurrency:
   group: production
@@ -17,9 +22,10 @@ jobs:
   quality:
     name: Lint and type-check
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || inputs.image_tag == ''
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
@@ -33,6 +39,7 @@ jobs:
     name: Build and push image
     needs: quality
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || inputs.image_tag == ''
     permissions:
       contents: read
       packages: write
@@ -52,6 +59,8 @@ jobs:
         with:
           context: .
           push: true
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
           tags: |
             ${{ env.IMAGE_REPO }}:${{ steps.meta.outputs.tag }}
             ${{ env.IMAGE_REPO }}:latest
@@ -60,3 +69,63 @@ jobs:
             APP_VERSION=${{ steps.meta.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+    deploy:
+      name: Deploy to production
+      needs: build
+      if: >-
+        always() &&
+        (needs.build.result == 'success' ||
+        (github.event_name == 'workflow_dispatch' && inputs.image_tag != ''))
+      runs-on: ubuntu-latest
+      environment:
+        name: production
+        url: https://travel.josanfersal.dev
+      permissions:
+        contents: read
+        packages: read
+      env:
+        TAG: ${{ inputs.image_tag || needs.build.outputs.tag }}
+        TARGET: ${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}
+      steps:
+        - uses: actions/checkout@v7
+
+        - name: Validate image tag
+          run: |
+            if [[ ! "$TAG" =~ ^sha-[0-9a-f]{7}$ ]]; then
+              echo "::error::Invalid image tag: $TAG"
+              exit 1
+            fi
+
+        - name: Configure SSH
+          env:
+            SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+            KNOWN_HOSTS: ${{ vars.DEPLOY_KNOWN_HOSTS }}
+          run: |
+            install -m 700 -d ~/.ssh
+            printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+            chmod 600 ~/.ssh/deploy_key
+            printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+        - name: Copy deploy files
+          run: rsync -az -e "ssh -i $HOME/.ssh/deploy_key" deploy/ "$TARGET:/opt/travel-agency/"
+
+        - name: Log the server into GHCR (short-lived token)
+          env:
+            GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            printf '%s' "$GHCR_TOKEN" | ssh -i ~/.ssh/deploy_key "$TARGET" \
+              "docker login ghcr.io -u '${{ github.actor }}' --password-stdin"
+
+        - name: Deploy
+          run: |
+            ssh -i ~/.ssh/deploy_key "$TARGET" \
+              "cd /opt/travel-agency && DOMAIN='$DOMAIN' IMAGE_REPO='$IMAGE_REPO' ./deploy.sh '$TAG'"
+
+        - name: Log the server out of GHCR
+          if: always()
+          run: ssh -i ~/.ssh/deploy_key "$TARGET" "docker logout ghcr.io" || true
+
+        - name: Smoke test
+          run: |
+            curl -fsS --retry 10 --retry-delay 3 --retry-all-errors \
+              "https://$DOMAIN/api/health" | tee /dev/stderr | grep -q '"status":"ok"'
