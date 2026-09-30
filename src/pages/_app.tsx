@@ -14,23 +14,25 @@ import OffersProvider from "@/context/offers";
 import ServiceWorkerBrevo from "@/components/serviceWorkerBrevo";
 
 function App({ Component, pageProps }: AppProps) {
-	return (
-		<div className="flex flex-col min-h-screen w-full">
-			<Head>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-			</Head>
-			<OffersProvider>
-				<ModalProvider>
-					<CookieBanner />
-					<ServiceWorkerBrevo />
-					<TopBar />
-					<Component {...pageProps} />
-					<ScrollToTopButton />
-					<Footer />
-				</ModalProvider>
-			</OffersProvider>
-		</div>
-	);
+  return (
+    <div className="flex flex-col min-h-screen w-full">
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <OffersProvider>
+        <ModalProvider>
+          <CookieBanner />
+          {process.env.NEXT_PUBLIC_BREVO_NEWSLETTER === "true" && (
+            <ServiceWorkerBrevo />
+          )}
+          <TopBar />
+          <Component {...pageProps} />
+          <ScrollToTopButton />
+          <Footer />
+        </ModalProvider>
+      </OffersProvider>
+    </div>
+  );
 }
 
 export default appWithTranslation(App);

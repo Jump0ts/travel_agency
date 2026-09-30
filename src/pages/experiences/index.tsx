@@ -6,6 +6,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { assetAbsoluteUrl } from "@/config/assets";
 
 const Experiences = () => {
   const router = useRouter();
@@ -39,7 +40,7 @@ const Experiences = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content={`${process.env.NEXT_PUBLIC_RSRC_REDESTINEA_URL}images/experiences/experience.jpg`}
+          content={assetAbsoluteUrl("images/experiences/experience.jpg")}
         />
       </Head>
       <div
