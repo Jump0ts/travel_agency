@@ -69,63 +69,64 @@ jobs:
             APP_VERSION=${{ steps.meta.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-    deploy:
-      name: Deploy to production
-      needs: build
-      if: >-
-        always() &&
-        (needs.build.result == 'success' ||
-        (github.event_name == 'workflow_dispatch' && inputs.image_tag != ''))
-      runs-on: ubuntu-latest
-      environment:
-        name: production
-        url: https://travel.josanfersal.dev
-      permissions:
-        contents: read
-        packages: read
-      env:
-        TAG: ${{ inputs.image_tag || needs.build.outputs.tag }}
-        TARGET: ${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}
-      steps:
-        - uses: actions/checkout@v7
 
-        - name: Validate image tag
-          run: |
-            if [[ ! "$TAG" =~ ^sha-[0-9a-f]{7}$ ]]; then
-              echo "::error::Invalid image tag: $TAG"
-              exit 1
-            fi
+  deploy:
+    name: Deploy to production
+    needs: build
+    if: >-
+      always() &&
+      (needs.build.result == 'success' ||
+      (github.event_name == 'workflow_dispatch' && inputs.image_tag != ''))
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://travel.josanfersal.dev
+    permissions:
+      contents: read
+      packages: read
+    env:
+      TAG: ${{ inputs.image_tag || needs.build.outputs.tag }}
+      TARGET: ${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}
+    steps:
+      - uses: actions/checkout@v7
 
-        - name: Configure SSH
-          env:
-            SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-            KNOWN_HOSTS: ${{ vars.DEPLOY_KNOWN_HOSTS }}
-          run: |
-            install -m 700 -d ~/.ssh
-            printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
-            chmod 600 ~/.ssh/deploy_key
-            printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+      - name: Validate image tag
+        run: |
+          if [[ ! "$TAG" =~ ^sha-[0-9a-f]{7}$ ]]; then
+            echo "::error::Invalid image tag: $TAG"
+            exit 1
+          fi
 
-        - name: Copy deploy files
-          run: rsync -az -e "ssh -i $HOME/.ssh/deploy_key" deploy/ "$TARGET:/opt/travel-agency/"
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ vars.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
 
-        - name: Log the server into GHCR (short-lived token)
-          env:
-            GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: |
-            printf '%s' "$GHCR_TOKEN" | ssh -i ~/.ssh/deploy_key "$TARGET" \
-              "docker login ghcr.io -u '${{ github.actor }}' --password-stdin"
+      - name: Copy deploy files
+        run: rsync -az -e "ssh -i $HOME/.ssh/deploy_key" deploy/ "$TARGET:/opt/travel-agency/"
 
-        - name: Deploy
-          run: |
-            ssh -i ~/.ssh/deploy_key "$TARGET" \
-              "cd /opt/travel-agency && DOMAIN='$DOMAIN' IMAGE_REPO='$IMAGE_REPO' ./deploy.sh '$TAG'"
+      - name: Log the server into GHCR (short-lived token)
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          printf '%s' "$GHCR_TOKEN" | ssh -i ~/.ssh/deploy_key "$TARGET" \
+            "docker login ghcr.io -u '${{ github.actor }}' --password-stdin"
 
-        - name: Log the server out of GHCR
-          if: always()
-          run: ssh -i ~/.ssh/deploy_key "$TARGET" "docker logout ghcr.io" || true
+      - name: Deploy
+        run: |
+          ssh -i ~/.ssh/deploy_key "$TARGET" \
+            "cd /opt/travel-agency && DOMAIN='$DOMAIN' IMAGE_REPO='$IMAGE_REPO' ./deploy.sh '$TAG'"
 
-        - name: Smoke test
-          run: |
-            curl -fsS --retry 10 --retry-delay 3 --retry-all-errors \
-              "https://$DOMAIN/api/health" | tee /dev/stderr | grep -q '"status":"ok"'
+      - name: Log the server out of GHCR
+        if: always()
+        run: ssh -i ~/.ssh/deploy_key "$TARGET" "docker logout ghcr.io" || true
+
+      - name: Smoke test
+        run: |
+          curl -fsS --retry 10 --retry-delay 3 --retry-all-errors \
+            "https://$DOMAIN/api/health" | tee /dev/stderr | grep -q '"status":"ok"'
