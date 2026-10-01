@@ -1,36 +1,27 @@
-# 🌍 Redestinea — Agencia de Viajes
+# Mochila — demo travel site
 
-Bienvenido/a a **Redestinea**, un proyecto creado como parte de mi portfolio profesional. Se trata de una plataforma de reservas de viajes y experiencias desarrollada con tecnologías modernas del ecosistema Front End.
+**Live demo:** https://travel.josanfersal.dev
 
-## 🛠️ Tecnologías utilizadas
+Next.js website I originally built for a real travel agency and ran in production. After the client closed, I turned it into a fictional portfolio demo ("Mochila") and rebuilt its delivery pipeline from scratch.
 
-- ⚡ [Next.js](https://nextjs.org/)
-- 🟦 TypeScript
-- 🎨 Tailwind CSS
-- 🐳 Docker
+> Demo only: the agency is fictional, no bookings are made and the contact form sends nothing.
 
-## 🚀 Demo en producción
+## Stack
 
-Puedes ver la web en funcionamiento aquí:  
-👉 [www.redestinea.com](https://www.redestinea.com)
+- **App:** Next.js 15, React 19, TypeScript, Tailwind CSS, i18next
+- **Infrastructure as code:** Terraform on DigitalOcean (droplet, firewall, SSH keys, cloud-init hardening)
+- **Containers:** multi-stage Docker image (standalone Next.js, non-root, healthcheck) published to GHCR
+- **Web server:** nginx with Let's Encrypt certificates (auto-renewed by certbot) and security headers
+- **CI/CD:** GitHub Actions — lint, type-check, workflow linting (actionlint), image build and push, deploy over SSH, smoke test, one-click rollback
 
-## 📂 Estructura del proyecto
+## Zero-downtime deploys
 
-- `/pages` — páginas del sitio
-- `/components` — componentes reutilizables
-- `/styles` — configuración de estilos con Tailwind
-- `/public` — recursos estáticos
+Each release starts on the idle colour (blue/green), waits for the container healthcheck, switches nginx and stops the old version. Measured during a real deploy: **1,165 requests, 0 failures**. A rollback to any of the last image tags takes about 20 seconds and skips the build.
 
-## 🧪 Desarrollo y despliegue
+## Author
 
-El entorno está preparado para correr tanto en **staging** como en **producción** usando Docker y Nginx. Las imágenes se generan automáticamente con CI/CD.
+Jose Antonio Fernández Salado — [LinkedIn](https://www.linkedin.com/in/josanfersal/)
 
-## 🧑‍💼 Sobre mí
+## License
 
-Soy desarrollador Front End especializado en React y Next.js. Este proyecto forma parte de mi portfolio técnico.
-
-📫 Puedes saber más de mí o contactarme a través de [LinkedIn](https://www.linkedin.com/in/josanfersal/)
-
-## 📝 Licencia
-
-Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para más información.
+[MIT](./LICENSE)
