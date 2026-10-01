@@ -23,7 +23,7 @@ set_env IMAGE_REPO "$IMAGE_REPO"
 set_env "${NEW^^}_TAG" "$TAG"
 
 # --- 2. Start the new colour and wait until it is healthy ---
-docker compose pull "app_$NEW"
+docker compose pull "app_$NEW" || docker image inspect "$IMAGE_REPO:$TAG" > /dev/null
 docker compose up -d --no-deps "app_$NEW"
 CID=$(docker compose ps -q "app_$NEW")
 for i in $(seq 1 30); do

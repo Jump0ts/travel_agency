@@ -43,6 +43,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     outputs:
       tag: ${{ steps.meta.outputs.tag }}
     steps:
@@ -56,9 +58,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v7
+        id: build-push
         with:
           context: .
           push: true
+          provenance: false
+          sbom: false
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
           tags: |
@@ -69,6 +74,13 @@ jobs:
             APP_VERSION=${{ steps.meta.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Attest build provenance
+        uses: actions/attest@v4
+        with:
+          subject-name: ${{ env.IMAGE_REPO }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: false
 
   deploy:
     name: Deploy to production
@@ -130,3 +142,17 @@ jobs:
         run: |
           curl -fsS --retry 10 --retry-delay 3 --retry-all-errors \
             "https://$DOMAIN/api/health" | tee /dev/stderr | grep -q '"status":"ok"'
+
+    cleanup:
+      name: Prune old images in GHCR
+      needs: deploy
+      if: needs.deploy.result == 'success'
+      runs-on: ubuntu-latest
+      permissions:
+        packages: write
+      steps:
+        - uses: actions/delete-package-versions@v5
+          with:
+            package-name: travel_agency
+            package-type: container
+            min-versions-to-keep: 5
