@@ -3,7 +3,7 @@
 resource "digitalocean_uptime_check" "site" {
   name    = "${var.project_name}-health"
   target  = var.site_url
-  regions = ["eu_west", "us_east"]
+  regions = ["eu_west"]
 }
 
 resource "digitalocean_uptime_alert" "down" {
