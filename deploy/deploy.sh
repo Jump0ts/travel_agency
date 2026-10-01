@@ -71,5 +71,5 @@ echo "==> nginx now routes to app_$NEW"
 if [[ "$ACTIVE" != none ]]; then docker compose stop "app_$ACTIVE"; fi
 echo "$NEW" > "$STATE_DIR/active"
 echo "$(date -u +%FT%TZ) $TAG $NEW" >> "$STATE_DIR/history"
-docker image prune -f > /dev/null
+docker image prune -af > /dev/null
 echo "==> Deployed $TAG on $NEW"
