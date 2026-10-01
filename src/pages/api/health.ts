@@ -3,8 +3,5 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(_req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Cache-Control", "no-store");
-  return res.status(200).json({
-    status: "ok",
-    version: process.env.APP_VERSION ?? "dev",
-  });
+  return res.status(200).json({ status: "ok" });
 }
