@@ -23,7 +23,7 @@ jobs:
           fi
 
           # develop only receives PRs from feature/* or hotfix/*
-          if [[ "$TARGET" == "develop" && ! "$SOURCE" =~ ^(feature|hotfix)/[a-z0-9._-]+$ ]]; then
-            echo "::error::PRs to develop are only allowed from feature/* or hotfix/*"
+          if [[ "$TARGET" == "develop" && ! "$SOURCE" =~ ^((feature|hotfix)/[a-z0-9._-]+|dependabot/.+)$ ]]; then
+            echo "::error::PRs to develop are only allowed from feature/*, hotfix/* or dependabot/*"
             exit 1
           fi
