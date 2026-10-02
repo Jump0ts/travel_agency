@@ -2,12 +2,12 @@ name: travel-agency
 
 services:
   app_blue:
-    image: ${IMAGE_REPO}:${BLUE_TAG:-none}
+    image: ${BLUE_IMAGE:-none}
     restart: unless-stopped
     mem_limit: 400m
 
   app_green:
-    image: ${IMAGE_REPO}:${GREEN_TAG:-none}
+    image: ${GREEN_IMAGE:-none}
     restart: unless-stopped
     mem_limit: 400m
 
