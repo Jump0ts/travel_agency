@@ -39,3 +39,15 @@ variable "admin_ssh_cidrs" {
   type        = list(string)
   default     = ["0.0.0.0/0", "::/0"]
 }
+
+variable "alert_email" {
+  description = "Email that receives monitoring alerts (set via TF_VAR_alert_email, never committed)."
+  type        = string
+  sensitive   = true
+}
+
+variable "site_url" {
+  description = "Public health endpoint checked from outside."
+  type        = string
+  default     = "https://travel.josanfersal.dev/api/health"
+}
