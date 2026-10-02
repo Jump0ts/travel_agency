@@ -96,6 +96,7 @@ jobs:
     permissions:
       contents: read
       packages: read
+      attestations: read
     env:
       TAG: ${{ inputs.image_tag || needs.build.outputs.tag }}
       TARGET: ${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}
@@ -108,6 +109,21 @@ jobs:
             echo "::error::Invalid image tag: $TAG"
             exit 1
           fi
+
+      - name: Resolve digest and verify build provenance
+        id: verify
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          DIGEST=$(docker buildx imagetools inspect "$IMAGE_REPO:$TAG" --format '{{json .Manifest}}' | jq -r .digest)
+          if [[ ! "$DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]]; then
+            echo "::error::Could not resolve a valid digest for $TAG"
+            exit 1
+          fi
+          gh attestation verify "oci://$IMAGE_REPO@$DIGEST" \
+            --repo "$GITHUB_REPOSITORY" \
+            --signer-workflow "$GITHUB_REPOSITORY/.github/workflows/deploy.yml"
+          echo "digest=$DIGEST" >> "$GITHUB_OUTPUT"
 
       - name: Configure SSH
         env:
@@ -130,9 +146,11 @@ jobs:
             "docker login ghcr.io -u '${{ github.actor }}' --password-stdin"
 
       - name: Deploy
+        env:
+          IMAGE_DIGEST: ${{ steps.verify.outputs.digest }}
         run: |
           ssh -i ~/.ssh/deploy_key "$TARGET" \
-            "cd /opt/travel-agency && DOMAIN='$DOMAIN' IMAGE_REPO='$IMAGE_REPO' ./deploy.sh '$TAG'"
+            "cd /opt/travel-agency && DOMAIN='$DOMAIN' IMAGE_REPO='$IMAGE_REPO' IMAGE_DIGEST='$IMAGE_DIGEST' ./deploy.sh '$TAG'"
 
       - name: Log the server out of GHCR
         if: always()
