@@ -45,7 +45,24 @@ jobs:
         with:
           context: .
           push: false
+          load: true
+          tags: travel-agency:ci
           build-args: |
             NEXT_PUBLIC_BASE_URL=https://travel.josanfersal.dev
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Smoke test the container
+        run: |
+          docker image ls travel-agency:ci --format 'Image size: {{.Size}}'
+          docker run -d --name app -p 3000:3000 travel-agency:ci
+          for i in $(seq 1 20); do
+            if curl -fsS http://localhost:3000/api/health; then
+              echo " -> container is healthy"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Container did not become healthy:"
+          docker logs app
+          exit 1
