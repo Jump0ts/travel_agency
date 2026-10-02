@@ -146,6 +146,8 @@ jobs:
             "docker login ghcr.io -u '${{ github.actor }}' --password-stdin"
 
       - name: Deploy
+        env:
+          IMAGE_DIGEST: ${{ steps.verify.outputs.digest }}
         run: |
           ssh -i ~/.ssh/deploy_key "$TARGET" \
             "cd /opt/travel-agency && DOMAIN='$DOMAIN' IMAGE_REPO='$IMAGE_REPO' IMAGE_DIGEST='$IMAGE_DIGEST' ./deploy.sh '$TAG'"
