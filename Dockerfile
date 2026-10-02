@@ -15,9 +15,17 @@
     ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL \
         NEXT_TELEMETRY_DISABLED=1
     RUN npm run build
+    # Alpine uses musl: the glibc build of sharp/libvips can never load here.
+    RUN rm -rf .next/standalone/node_modules/@img/sharp-libvips-linux-x64 \
+                .next/standalone/node_modules/@img/sharp-linux-x64
     
     # ---- 3. Runtime ----
-    FROM node:22-alpine AS runtime
+    FROM alpine:3.24 AS runtime
+    # Only the Node.js binary and the C++ runtime it links against: no npm, no yarn.
+    RUN apk add --no-cache libstdc++ libgcc \
+        && addgroup -g 1000 node \
+        && adduser -u 1000 -G node -s /bin/sh -D node
+    COPY --from=node:22-alpine /usr/local/bin/node /usr/local/bin/node
     WORKDIR /app
     ARG APP_VERSION=dev
     ENV NODE_ENV=production \
