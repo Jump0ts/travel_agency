@@ -46,12 +46,12 @@ echo "==> app_$NEW is healthy"
 echo "upstream app { server app_$NEW:3000; }" > nginx/conf.d/upstream.conf
 render_site() { sed "s/__DOMAIN__/$DOMAIN/g" "nginx/templates/$1" > nginx/conf.d/site.conf; }
 apply_nginx() {
-  if [[ -n "$(docker compose ps -q --status running nginx)" ]]; then
-    docker compose exec -T nginx nginx -t
-    docker compose exec -T nginx nginx -s reload
-  else
-    docker compose up -d --no-deps nginx
-  fi
+  # Test the config with the image docker-compose.yml asks for, before it serves traffic:
+  # a broken nginx upgrade fails here and the current nginx keeps running.
+  docker compose run --rm --no-deps -T --entrypoint nginx nginx -t
+  # No-op if nginx already runs that image; recreates it (~1 s gap) only after an upgrade.
+  docker compose up -d --no-deps nginx
+  docker compose exec -T nginx nginx -s reload
 }
 
 HAS_CERT=$(docker compose run --rm -T --entrypoint sh certbot \
