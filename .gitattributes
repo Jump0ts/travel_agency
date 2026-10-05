@@ -2,3 +2,4 @@
 infra/** text eol=lf
 *.sh text eol=lf
 deploy/** text eol=lf
+.github/** text eol=lf

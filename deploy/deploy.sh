@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 # Blue/green deploy for travel-agency.
 # Usage:    ./deploy.sh <image-tag>
-# Requires: DOMAIN and IMAGE_REPO environment variables.
+# Requires: DOMAIN, IMAGE_REPO and IMAGE_DIGEST environment variables.
 set -euo pipefail
 cd "$(dirname "$0")"
 
 TAG="${1:?Usage: deploy.sh <image-tag>}"
 : "${DOMAIN:?DOMAIN is required}"
 : "${IMAGE_REPO:?IMAGE_REPO is required}"
+: "${IMAGE_DIGEST:?IMAGE_DIGEST is required}"
+[[ "$IMAGE_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]] || { echo "Invalid digest: $IMAGE_DIGEST" >&2; exit 1; }
+IMAGE_REF="$IMAGE_REPO@$IMAGE_DIGEST"
 [[ "$TAG" =~ ^[A-Za-z0-9._-]{1,128}$ ]] || { echo "Invalid tag: $TAG" >&2; exit 1; }
 
 STATE_DIR=.state
@@ -16,14 +19,14 @@ ACTIVE=$(cat "$STATE_DIR/active" 2>/dev/null || echo none)
 if [[ "$ACTIVE" == blue ]]; then NEW=green; else NEW=blue; fi
 echo "==> Active: $ACTIVE | deploying $TAG to $NEW"
 
-# --- 1. Save the image tags that docker compose reads from .env ---
+# --- 1. Save the image references (pinned by digest) ---
 touch .env
 set_env() { grep -v "^$1=" .env > .env.tmp || true; echo "$1=$2" >> .env.tmp; mv .env.tmp .env; }
 set_env IMAGE_REPO "$IMAGE_REPO"
-set_env "${NEW^^}_TAG" "$TAG"
+set_env "${NEW^^}_IMAGE" "$IMAGE_REF"
 
 # --- 2. Start the new colour and wait until it is healthy ---
-docker compose pull "app_$NEW" || docker image inspect "$IMAGE_REPO:$TAG" > /dev/null
+docker compose pull "app_$NEW" || docker image inspect "$IMAGE_REF" > /dev/null
 docker compose up -d --no-deps "app_$NEW"
 CID=$(docker compose ps -q "app_$NEW")
 for i in $(seq 1 30); do
@@ -70,6 +73,6 @@ echo "==> nginx now routes to app_$NEW"
 # --- 4. Stop the old colour and remember the new state ---
 if [[ "$ACTIVE" != none ]]; then docker compose stop "app_$ACTIVE"; fi
 echo "$NEW" > "$STATE_DIR/active"
-echo "$(date -u +%FT%TZ) $TAG $NEW" >> "$STATE_DIR/history"
+echo "$(date -u +%FT%TZ) $TAG $IMAGE_DIGEST $NEW" >> "$STATE_DIR/history"
 docker image prune -af > /dev/null
 echo "==> Deployed $TAG on $NEW"

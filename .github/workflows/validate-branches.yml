@@ -16,14 +16,14 @@ jobs:
         run: |
           echo "Source: $SOURCE -> Target: $TARGET"
 
-          # master only receives PRs from develop or hotfix/*
-          if [[ "$TARGET" == "master" && ! "$SOURCE" =~ ^(develop|hotfix/[a-z0-9._-]+)$ ]]; then
-            echo "::error::PRs to master are only allowed from develop or hotfix/*"
+          # master only receives PRs from develop, hotfix/* or Dependabot security updates
+          if [[ "$TARGET" == "master" && ! "$SOURCE" =~ ^(develop|hotfix/[a-z0-9._-]+|dependabot/.+)$ ]]; then
+            echo "::error::PRs to master are only allowed from develop, hotfix/* or dependabot/*"
             exit 1
           fi
 
           # develop only receives PRs from feature/* or hotfix/*
-          if [[ "$TARGET" == "develop" && ! "$SOURCE" =~ ^(feature|hotfix)/[a-z0-9._-]+$ ]]; then
-            echo "::error::PRs to develop are only allowed from feature/* or hotfix/*"
+          if [[ "$TARGET" == "develop" && ! "$SOURCE" =~ ^((feature|hotfix)/[a-z0-9._-]+|dependabot/.+)$ ]]; then
+            echo "::error::PRs to develop are only allowed from feature/*, hotfix/* or dependabot/*"
             exit 1
           fi
