@@ -7,7 +7,6 @@ import { appWithTranslation } from "next-i18next";
 import TopBar from "@/components/navbars/topBar";
 import Footer from "@/components/footer";
 import ScrollToTopButton from "@/components/scrollToTopButton";
-import CookieBanner from "@/components/cookieBanner";
 import Head from "next/head";
 import { ModalProvider } from "@/context/modal";
 import OffersProvider from "@/context/offers";
@@ -21,7 +20,6 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <OffersProvider>
         <ModalProvider>
-          <CookieBanner />
           {process.env.NEXT_PUBLIC_BREVO_NEWSLETTER === "true" && (
             <ServiceWorkerBrevo />
           )}
