@@ -2,34 +2,34 @@ import { BRAND } from "@/config/brand";
 
 const cookiePolicy = {
   title: "🍪 Política de Cookies",
-  lastUpdated: "Última actualización: 8 de abril de 2025",
-  description: `En ${BRAND.name} utilizamos cookies y tecnologías similares para garantizar el correcto funcionamiento de nuestro sitio web, mejorar la experiencia del usuario, analizar el tráfico y mostrarte contenido personalizado, incluyendo anuncios relevantes.`,
+  lastUpdated: "Última actualización: 5 de octubre de 2026",
+  description: `${BRAND.name} es una web de demostración: no utiliza cookies de análisis, publicidad ni seguimiento.`,
   whatIsCookie: {
     title: "¿Qué son las cookies?",
     description:
-      "as cookies son pequeños archivos de texto que los sitios web colocan en tu dispositivo al visitarlos. Sirven para recordar tus preferencias, reconocerte en futuras visitas y recopilar información sobre tu navegación con el fin de mejorar nuestros servicios.",
+      "Las cookies son pequeños archivos de texto que los sitios web colocan en tu dispositivo al visitarlos. Sirven para recordar preferencias o recopilar información sobre la navegación con el fin de mejorar nuestros servicios.",
   },
   types: {
     title: "Tipos de cookies que utilizamos",
     item1: {
       title: "1. Cookies técnicas y necesarias",
-      description: `Estas cookies son esenciales para que ${BRAND.name} funcione correctamente. Permiten la navegación, el acceso a áreas seguras y la realización de reservas o solicitudes. No requieren tu consentimiento.`,
+      description: `Solo se usarían cookies técnicas imprescindibles para que ${BRAND.name} funcione. No requieren tu consentimiento.`,
     },
     item2: {
       title: "2. Cookies de análisis o rendimiento",
       description:
-        "Nos ayudan a entender cómo interactúan los visitantes con el sitio web, para poder mejorar nuestros contenidos y funcionalidades. Por ejemplo, usamos herramientas como Google Analytics.",
+        "No utilizamos cookies de análisis. Esta demo no incluye Google Analytics ni otras herramientas de medición.",
     },
     item3: {
-      title: "3. Cookies de personalización",
+      title: "3. Cookies de personalización y publicidad",
       description:
-        "Permiten recordar tus preferencias como el idioma o la ubicación, para ofrecerte una experiencia más adaptada a ti.",
+        "No utilizamos cookies de personalización, publicitarias ni de terceros.",
     },
   },
   cookieManagement: {
     title: "¿Cómo puedes gestionar las cookies?",
     description:
-      "Puedes aceptar, rechazar o configurar el uso de cookies (excepto las necesarias) a través de nuestro panel de configuración de cookies.",
+      "Como no usamos cookies opcionales, no hay nada que aceptar ni configurar. Puedes borrar o bloquear las cookies desde la configuración de tu navegador.",
   },
   changes: {
     title: "Cambios en la política de cookies",
